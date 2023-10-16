@@ -3,7 +3,7 @@ create table ky_tuc_xa
     ten_ky_tuc_xa  varchar(100) not null
         primary key,
     so_luong_phong int          not null,
-    dia_chi        int          not null
+    dia_chi        varchar(100) not null
 );
 
 create table loai_phong
