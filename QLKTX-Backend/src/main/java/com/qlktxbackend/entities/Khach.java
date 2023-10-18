@@ -16,7 +16,7 @@ public class Khach implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "ma_so_dinh_danhh_K", nullable = false)
+    @Column(name = "ma_so_dinh_danh_K", nullable = false)
     private String maSoDinhDanhhK;
 
     @Column(name = "nghe_nghiep", nullable = false)

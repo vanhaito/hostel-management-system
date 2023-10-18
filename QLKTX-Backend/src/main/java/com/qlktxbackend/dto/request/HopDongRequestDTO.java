@@ -20,6 +20,7 @@ public class HopDongRequestDTO {
     @NotNull(message = "maSv can not null")
     private String maSv;
 
+    @NotNull(message = "maSoDinhDanhN can not null")
     private String maSoDinhDanhN;
 
     @NotNull(message = "tenPhong can not null")

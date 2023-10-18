@@ -23,6 +23,6 @@ public class KyTucXa implements Serializable {
     private Integer soLuongPhong;
 
     @Column(name = "dia_chi", nullable = false)
-    private Integer diaChi;
+    private String diaChi;
 
 }

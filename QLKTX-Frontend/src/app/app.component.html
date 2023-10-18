@@ -1,0 +1,46 @@
+<div  class="dashboard">
+
+  <div class="dashboard-nav">
+    <header><a href="#" class="menu-toggle"><i class="fas fa-bars"></i></a><a routerLink="home"
+        routerLinkActive="active" class="brand-logo"><i class="fas fa-home"></i><span>Quản lý KTX</span></a></header>
+    <nav class="dashboard-nav-list">
+      <a routerLink="driver" routerLinkActive="active" class="dashboard-nav-item"><i class="far fa-id-card"></i>Quản lý ký túc xá </a>
+      <a routerLink="coach" routerLinkActive="active" class="dashboard-nav-item"><i class="fas fa-bus"></i>Quản lý phòng</a>
+      <a routerLink="nguoi" routerLinkActive="active" class="dashboard-nav-item"><i class="fas fa-route"></i> Quản
+        lý người </a>
+      <a routerLink="route" routerLinkActive="active" class="dashboard-nav-item"><i class="fas fa-route"></i> Quản
+        lý sinh viên </a>
+      <a routerLink="route" routerLinkActive="active" class="dashboard-nav-item"><i class="fas fa-route"></i> Quản
+          lý khách</a>
+      <a routerLink="coach-turn" routerLinkActive="active" class="dashboard-nav-item"><i class="fas fa-directions"></i> Quản
+        lý hợp đồng</a>
+      <a routerLink="coach-turn" routerLinkActive="active" class="dashboard-nav-item"><i class="fas fa-directions"></i> Quản
+          lý vé xe</a>
+      <a routerLink="coach-turn" routerLinkActive="active" class="dashboard-nav-item"><i class="fas fa-directions"></i> Quản
+            lý lượt gửi xe</a>
+      <a routerLink="coach-turn" routerLinkActive="active" class="dashboard-nav-item"><i class="fas fa-directions"></i> Quản
+            lý giặt là</a>
+      <a routerLink="coach" routerLinkActive="active" class="dashboard-nav-item"><i class="fas fa-bus"></i>Quản lý loại phòng</a>
+      <a routerLink="revenue-stats-coach" routerLinkActive="active" class="dashboard-nav-item"><i class="fas fa-chart-bar"></i> Thống kê doanh thu xe </a>
+      <a routerLink="salary" routerLinkActive="active" class="dashboard-nav-item"><i class="fas fa-money-bill-wave"></i> Bảng lương </a>
+      <!-- <div class="nav-item-divider"></div> -->
+    </nav>
+  </div>
+
+  <div class="dashboard-app" >
+    <header class='dashboard-toolbar' >
+      <a href="#!" class="menu-toggle">
+        <i class="fas fa-bars"></i></a>
+      <div class="btn-group" style="margin-left: auto;">
+        <button type="button" class="btn btn-primary mr-3" routerLink="account" routerLinkActive="active">Account</button>
+        <button type="button" class="btn btn-primary" >Logout</button>
+      </div>
+    </header>
+    <div class="dashboard-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>
+
+

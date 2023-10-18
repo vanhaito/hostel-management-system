@@ -1,15 +1,14 @@
 package com.qlktxbackend.entities;
 
+import com.qlktxbackend.entities.key.PhongKey;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
 @Entity
+@IdClass(PhongKey.class)
 @Table(name = "phong")
 public class Phong implements Serializable {
 

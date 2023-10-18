@@ -1,7 +1,7 @@
 package com.qlktxbackend.helpers.exceptions;
 
-import com.sct.vedi.helpers.ExceptionDTOResponse;
-import com.sct.vedi.helpers.ResponseStatusCodeEnum;
+import com.qlktxbackend.helpers.ExceptionDTOResponse;
+import com.qlktxbackend.helpers.ResponseStatusCodeEnum;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

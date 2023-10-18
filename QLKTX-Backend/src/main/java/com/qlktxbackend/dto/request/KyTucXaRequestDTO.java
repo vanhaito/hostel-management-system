@@ -14,6 +14,6 @@ public class KyTucXaRequestDTO {
     private Integer soLuongPhong;
 
     @NotNull(message = "diaChi can not null")
-    private Integer diaChi;
+    private String diaChi;
 
 }

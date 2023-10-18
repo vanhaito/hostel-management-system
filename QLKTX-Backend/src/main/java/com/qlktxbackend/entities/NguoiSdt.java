@@ -1,15 +1,14 @@
 package com.qlktxbackend.entities;
 
+import com.qlktxbackend.entities.key.NguoiSdtKey;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
 @Entity
+@IdClass(NguoiSdtKey.class)
 @Table(name = "nguoi_sdt")
 public class NguoiSdt implements Serializable {
 
