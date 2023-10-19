@@ -8,8 +8,6 @@ import java.util.Date;
 
 @Data
 public class LanGiatRequestDTO {
-    @NotNull(message = "maLuotGiat can not null")
-    private Integer maLuotGiat;
 
     @NotNull(message = "donGia can not null")
     private Double donGia;

@@ -17,7 +17,7 @@ public class Khach implements Serializable {
 
     @Id
     @Column(name = "ma_so_dinh_danh_K", nullable = false)
-    private String maSoDinhDanhhK;
+    private String maSoDinhDanhK;
 
     @Column(name = "nghe_nghiep", nullable = false)
     private String ngheNghiep;

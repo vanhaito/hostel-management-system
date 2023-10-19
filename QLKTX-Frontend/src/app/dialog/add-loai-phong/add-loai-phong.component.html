@@ -1,0 +1,63 @@
+<div class="container">
+    <h1 mat-dialog-title *ngIf="data.update">Cập nhật loại phòng</h1>
+    <h1 mat-dialog-title *ngIf="!data.update">Thêm mới loại phòng</h1>
+
+    <div mat-dialog-content>
+        <form [formGroup]="formControl">
+
+
+            <div class="mt-2 form">
+                <mat-form-field class="fullWidth" appearance="outline">
+                    <mat-label>Mã loại phòng </mat-label>
+                    <input matInput type="text" formControlName="maLoaiPhong" [(ngModel)]="data.loaiPhong.maLoaiPhong" [readonly]="data.update"/>
+                    <mat-error *ngIf="
+          formControl.controls['maLoaiPhong']?.errors?.required">field required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="mt-2 form">
+                <mat-form-field class="fullWidth" appearance="outline">
+                    <mat-label>Tên loại phòng </mat-label>
+                    <input matInput type="text" formControlName="tenLoaiPhong" [(ngModel)]="data.loaiPhong.tenLoaiPhong" />
+                    <mat-error *ngIf="
+          formControl.controls['tenLoaiPhong']?.errors?.required">field required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="mt-2 form">
+                <mat-form-field class="fullWidth" appearance="outline">
+                    <mat-label>Diện tích </mat-label>
+                    <input matInput type="text" formControlName="dienTich" [(ngModel)]="data.loaiPhong.dienTich" />
+                    <mat-error *ngIf="
+          formControl.controls['dienTich']?.errors?.required">field required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="mt-2 form">
+                <mat-form-field class="fullWidth" appearance="outline">
+                    <mat-label>Giá </mat-label>
+                    <input matInput type="number" formControlName="gia" [(ngModel)]="data.loaiPhong.gia" />
+                    <mat-error *ngIf="
+          formControl.controls['gia']?.errors?.required">field required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="mt-2 form">
+                <mat-form-field class="fullWidth" appearance="outline">
+                    <mat-label>Số sinh viên tối da </mat-label>
+                    <input matInput type="number" formControlName="soSvToiDa" [(ngModel)]="data.loaiPhong.soSvToiDa" />
+                    <mat-error *ngIf="
+          formControl.controls['soSvToiDa']?.errors?.required">field required</mat-error>
+                </mat-form-field>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="mt-2" mat-dialog-actions>
+        <button mat-raised-button color="primary" [disabled]="!formControl.valid" (click)="edit()"
+            cdkFocusInitial>Yes</button>
+        <button mat-raised-button mat-dialog-close>No</button>
+
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="container">
+  <h1 mat-dialog-title *ngIf="data.update">Cập nhật sinh viên</h1>
+  <h1 mat-dialog-title *ngIf="!data.update">Thêm mới sinh viên</h1>
+
+  <div mat-dialog-content>
+    <form [formGroup]="formControl">
+
+      <div class="mt-2 form" *ngIf="data.update">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Mã lượt thăm </mat-label>
+          <input matInput type="text" formControlName="maLuotTham" [(ngModel)]="data.luotTham.maLuotTham" [readonly]="data.update"/>
+          <mat-error *ngIf="
+    formControl.controls['maLuotTham']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Thời gian đến</mat-label>
+          <input matInput [ngxMatDatetimePicker]="picker2" [(ngModel)]="dateStart" placeholder="Choose a date & time"
+                formControlName="thoiGianDen">
+
+          <mat-datepicker-toggle matSuffix [for]="$any(picker2)"></mat-datepicker-toggle>
+
+          <ngx-mat-datetime-picker #picker2></ngx-mat-datetime-picker>
+          <mat-error *ngIf="
+          formControl.controls['thoiGianDen']?.errors?.required">field required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Thời gian đi</mat-label>
+          <input matInput [ngxMatDatetimePicker]="picker" [(ngModel)]="dateEnd" placeholder="Choose a date & time"
+                  formControlName="thoiGianDi">
+
+          <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+
+          <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+          <mat-error *ngIf="
+          formControl.controls['thoiGianDi']?.errors?.required">field required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Mã só định danh</mat-label>
+          <mat-select [(ngModel)]="data.luotTham.maSoDinhDanhK"
+            formControlName='maSoDinhDanhK'>
+            <!-- <mat-option>
+                          <ngx-mat-select-search formControlName="maSoDinhDanhS"></ngx-mat-select-search>
+                      </mat-option> -->
+            <mat-option *ngFor="let item of data.khachList" [value]="item.maSoDinhDanhK">
+              {{item.maSoDinhDanhK}}-{{item.ngheNghiep}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+            formControl.controls['maSoDinhDanhK']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Mã SV</mat-label>
+          <mat-select [(ngModel)]="data.luotTham.maSv" formControlName='maSv'>
+            <!-- <mat-option>
+                        <ngx-mat-select-search formControlName="maSoDinhDanhS"></ngx-mat-select-search>
+                    </mat-option> -->
+            <mat-option *ngFor="let item of data.sinhVienList" [value]="item.maSv">
+              {{item.maSv}}-{{item.maSoDinhDanhS}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+          formControl.controls['maSv']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="mt-2" mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="!formControl.valid" (click)="edit()"
+      cdkFocusInitial>Yes</button>
+    <button mat-raised-button mat-dialog-close>No</button>
+
+  </div>
+</div>

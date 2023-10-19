@@ -1,0 +1,98 @@
+<div class="container">
+  <h1 mat-dialog-title *ngIf="data.update">Cập nhật sinh viên</h1>
+  <h1 mat-dialog-title *ngIf="!data.update">Thêm mới sinh viên</h1>
+
+  <div mat-dialog-content>
+    <form [formGroup]="formControl">
+
+      <div class="form">
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Mã hợp đồng</mat-label>
+            <input matInput type="text" formControlName="maHopDong" [(ngModel)]="data.hopDong.maHopDong" [readonly]="data.update">
+            <mat-error *ngIf="
+  formControl.controls['maHopDong']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+    </div>
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Ngày bắt đầu </mat-label>
+          <input matInput type="date" formControlName="ngayBatDau" [(ngModel)]="data.hopDong.ngayBatDau" />
+          <mat-error *ngIf="
+    formControl.controls['ngayBatDau']?.errors">Định dạng ngày sinh yyyy-mm-dd</mat-error>
+          <mat-error *ngIf="
+    formControl.controls['ngayBatDau']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Ngày kết thúc </mat-label>
+          <input matInput type="date" formControlName="ngayKetThuc" [(ngModel)]="data.hopDong.ngayKetThuc" />
+          <mat-error *ngIf="
+  formControl.controls['ngayKetThuc']?.errors">Định dạng ngày sinh yyyy-mm-dd</mat-error>
+          <mat-error *ngIf="
+  formControl.controls['ngayKetThuc']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Mã SV</mat-label>
+          <mat-select [(ngModel)]="data.hopDong.maSv" formControlName='maSv'>
+            <!-- <mat-option>
+                        <ngx-mat-select-search formControlName="maSoDinhDanhS"></ngx-mat-select-search>
+                    </mat-option> -->
+            <mat-option *ngFor="let item of data.sinhVienList" [value]="item.maSv">
+              {{item.maSv}}-{{item.maSoDinhDanhS}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+          formControl.controls['maSv']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Mã só định danh NVQL</mat-label>
+          <mat-select [(ngModel)]="data.hopDong.maSoDinhDanhN" formControlName='maSoDinhDanhN'>
+            <!-- <mat-option>
+                        <ngx-mat-select-search formControlName="maSoDinhDanhS"></ngx-mat-select-search>
+                    </mat-option> -->
+            <mat-option *ngFor="let item of data.nguoiList" [value]="item.maSoDinhDanh">
+              {{item.maSoDinhDanh}}-{{item.hoTen}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+          formControl.controls['maSoDinhDanhN']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Tên ký túc xá</mat-label>
+            <mat-select [(ngModel)]="data.hopDong.tenKtx"
+                formControlName='tenKtx'>
+                <!-- <mat-option>
+                    <ngx-mat-select-search formControlName="maSoDinhDanhS"></ngx-mat-select-search>
+                </mat-option> -->
+                <mat-option *ngFor="let item of data.kyTucXaList" [value]="item.tenKyTucXa">
+                    {{item.tenKyTucXa}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="
+      formControl.controls['tenKtx']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+    </div>
+
+
+    </form>
+  </div>
+
+
+  <div class="mt-2" mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="!formControl.valid" (click)="edit()"
+      cdkFocusInitial>Yes</button>
+    <button mat-raised-button mat-dialog-close>No</button>
+
+  </div>
+</div>

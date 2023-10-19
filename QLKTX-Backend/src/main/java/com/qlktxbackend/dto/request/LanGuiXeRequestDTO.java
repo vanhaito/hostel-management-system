@@ -8,8 +8,6 @@ import java.util.Date;
 
 @Data
 public class LanGuiXeRequestDTO {
-    @NotNull(message = "maLanGui can not null")
-    private Integer maLanGui;
 
     @NotNull(message = "thoiGianGui can not null")
     private Date thoiGianGui;

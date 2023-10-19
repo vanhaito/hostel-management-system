@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class KhachResponseDTO {
-    private String maSoDinhDanhhK;
+    private String maSoDinhDanhK;
 
     private String ngheNghiep;
 

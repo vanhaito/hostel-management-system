@@ -8,8 +8,6 @@ import java.util.Date;
 
 @Data
 public class LuotThamRequestDTO {
-    @NotNull(message = "maLuotTham can not null")
-    private Integer maLuotTham;
 
     @NotNull(message = "thoiGianDen can not null")
     private Date thoiGianDen;

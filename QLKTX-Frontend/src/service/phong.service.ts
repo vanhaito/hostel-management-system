@@ -15,8 +15,8 @@ export class PhongService {
     return this.httpClient.get<any>(url);
   }
 
-  getPhongById(id: number){
-    const url = `${this.baseUrl}/${id}`;
+  getPhongById(tenKyTucXa: any, tenPhong: any){
+    const url = `${this.baseUrl}/${tenKyTucXa}/${tenPhong}`;
     return this.httpClient.get<any>(url);
   }
 
@@ -25,13 +25,13 @@ export class PhongService {
     return this.httpClient.post<any>(url,data);
   }
 
-  deletePhong(id: number){
-    const url = `${this.baseUrl}/${id}`;
+  deletePhong(tenKyTucXa: any, tenPhong: any){
+    const url = `${this.baseUrl}/${tenKyTucXa}/${tenPhong}`;
     return this.httpClient.delete<any>(url);
   }
 
-  update(data: any,id: any){
-    const url = `${this.baseUrl}/${id}`;
+  update(data: any, tenKyTucXa: any, tenPhong: any){
+    const url = `${this.baseUrl}/${tenKyTucXa}/${tenPhong}`;
     return this.httpClient.put<any>(url,data);
   }
 }

@@ -20,6 +20,17 @@ import { HopDongComponent } from './module/hop-dong/hop-dong.component';
 import { LuotGuiXeComponent } from './module/luot-gui-xe/luot-gui-xe.component';
 import { GiatLaComponent } from './module/giat-la/giat-la.component';
 import { AddNguoiComponent } from './dialog/add-nguoi/add-nguoi.component';
+import { AddSinhVienComponent } from './dialog/add-sinh-vien/add-sinh-vien.component';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { AddKhachComponent } from './dialog/add-khach/add-khach.component';
+import { AddKyTucXaComponent } from './dialog/add-ky-tuc-xa/add-ky-tuc-xa.component';
+import { AddLoaiPhongComponent } from './dialog/add-loai-phong/add-loai-phong.component';
+import { AddPhongComponent } from './dialog/add-phong/add-phong.component';
+import { NhanVienQuanLyComponent } from './module/nhan-vien-quan-ly/nhan-vien-quan-ly.component';
+import { AddNhanVienQlComponent } from './dialog/add-nhan-vien-ql/add-nhan-vien-ql.component';
+import { AddHopDongComponent } from './dialog/add-hop-dong/add-hop-dong.component';
+import { LuotThamComponent } from './module/luot-tham/luot-tham.component';
+import { AddLuotThamComponent } from './dialog/add-luot-tham/add-luot-tham.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +46,17 @@ import { AddNguoiComponent } from './dialog/add-nguoi/add-nguoi.component';
     HopDongComponent,
     LuotGuiXeComponent,
     GiatLaComponent,
-    AddNguoiComponent
+    AddNguoiComponent,
+    AddSinhVienComponent,
+    AddKhachComponent,
+    AddKyTucXaComponent,
+    AddLoaiPhongComponent,
+    AddPhongComponent,
+    NhanVienQuanLyComponent,
+    AddNhanVienQlComponent,
+    AddHopDongComponent,
+    LuotThamComponent,
+    AddLuotThamComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +67,7 @@ import { AddNguoiComponent } from './dialog/add-nguoi/add-nguoi.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMatSelectSearchModule
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'}
