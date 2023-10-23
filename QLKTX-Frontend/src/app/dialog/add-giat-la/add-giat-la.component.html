@@ -1,0 +1,87 @@
+<div class="container">
+  <h1 mat-dialog-title *ngIf="data.update">Cập nhật lượt giặt</h1>
+  <h1 mat-dialog-title *ngIf="!data.update">Thêm mới lượt giặt</h1>
+
+  <div mat-dialog-content>
+    <form [formGroup]="formControl">
+
+      <div class="mt-2 form" *ngIf="data.update">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Mã lượt giặt </mat-label>
+          <input matInput type="text" formControlName="maLuotGiat" [(ngModel)]="data.giatLa.maLuotGiat" [readonly]="data.update"/>
+          <mat-error *ngIf="
+    formControl.controls['maLuotGiat']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Đơn giá </mat-label>
+            <input matInput type="number" formControlName="donGia" [(ngModel)]="data.giatLa.donGia" />
+            <mat-error *ngIf="
+  formControl.controls['donGia']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="mt-2 form">
+      <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Khối lượng </mat-label>
+          <input matInput type="number" formControlName="khoiLuong" [(ngModel)]="data.giatLa.khoiLuong" />
+          <mat-error *ngIf="
+formControl.controls['khoiLuong']?.errors?.required">field required</mat-error>
+      </mat-form-field>
+  </div>
+
+      <!-- <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Ngày giặt </mat-label>
+          <input matInput type="date" formControlName="ngayGiat" [(ngModel)]="data.giatLa.ngayGiat" />
+          <mat-error *ngIf="
+    formControl.controls['ngayGiat']?.errors">Định dạng ngày sinh yyyy-mm-dd</mat-error>
+          <mat-error *ngIf="
+    formControl.controls['ngayGiat']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+      </div> -->
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Ngày giặt</mat-label>
+          <input matInput [ngxMatDatetimePicker]="picker2" [(ngModel)]="dateTime" placeholder="Choose a date & time"
+                formControlName="ngayGiat">
+
+          <mat-datepicker-toggle matSuffix [for]="$any(picker2)"></mat-datepicker-toggle>
+
+          <ngx-mat-datetime-picker #picker2></ngx-mat-datetime-picker>
+          <mat-error *ngIf="
+          formControl.controls['ngayGiat']?.errors?.required">field required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Mã SV</mat-label>
+          <mat-select [(ngModel)]="data.giatLa.maSv" formControlName='maSv'>
+            <!-- <mat-option>
+                        <ngx-mat-select-search formControlName="maSoDinhDanhS"></ngx-mat-select-search>
+                    </mat-option> -->
+            <mat-option *ngFor="let item of data.sinhVienList" [value]="item.maSv">
+              {{item.maSv}}-{{item.maSoDinhDanhS}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+          formControl.controls['maSv']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+    </form>
+  </div>
+
+
+  <div class="mt-2" mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="!formControl.valid" (click)="edit()"
+      cdkFocusInitial>Yes</button>
+    <button mat-raised-button mat-dialog-close>No</button>
+
+  </div>
+</div>

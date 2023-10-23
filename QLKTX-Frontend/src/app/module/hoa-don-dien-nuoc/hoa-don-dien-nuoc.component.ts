@@ -3,31 +3,44 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
-import { AddGiatLaComponent } from 'src/app/dialog/add-giat-la/add-giat-la.component';
+import { AddHoaDonDienNuocComponent } from 'src/app/dialog/add-hoa-don-dien-nuoc/add-hoa-don-dien-nuoc.component';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/dialog/confirm-dialog/confirm-dialog.component';
-import { GiatLaService } from 'src/service/giat-la.service';
+import { HoaDonDienNuocService } from 'src/service/hoa-don-dien-nuoc.service';
+import { KyTucXaService } from 'src/service/ky-tuc-xa.service';
+import { NguoiService } from 'src/service/nguoi.service';
+import { PhongService } from 'src/service/phong.service';
 import { SinhVienService } from 'src/service/sinh-vien.service';
 
 @Component({
-  selector: 'app-giat-la',
-  templateUrl: './giat-la.component.html',
-  styleUrls: ['./giat-la.component.scss']
+  selector: 'app-hoa-don-dien-nuoc',
+  templateUrl: './hoa-don-dien-nuoc.component.html',
+  styleUrls: ['./hoa-don-dien-nuoc.component.scss']
 })
-export class GiatLaComponent implements OnInit {
+export class HoaDonDienNuocComponent implements OnInit {
 
   resultComfirm: string = '';
   formSearch!: FormGroup;
 
-  giatLaList: any[] = [];
+  hoaDonDienNuocList: any[] = [];
+  nguoiList: any[] = [];
+  kyTucXaList: any[] = [];
+  phongList: any[] = [];
   sinhVienList: any[] = [];
 
   displayedColumns: string[] = [
     'no',
-    "maLuotGiat",
-    "donGia",
-    "khoiLuong",
-    "ngayGiat",
-    "maSv",
+    "maHoaDon",
+    "ngayLapHoaDon",
+    "chiSoDienDau",
+    "chiSoDienCuoi",
+    "chiSoNuocDau",
+    "chiSoNuocCuoi",
+    "donGiaDien",
+    "donGiaNuoc",
+    "ngayBatDau",
+    "ngayKetThuc",
+    "tenKtx",
+    "tenPhong",
     "action"
   ];
   dataSource = new MatTableDataSource<any>();
@@ -39,7 +52,10 @@ export class GiatLaComponent implements OnInit {
   }
 
   constructor(
-    private giatLaService: GiatLaService,
+    private hoaDonDienNuocService: HoaDonDienNuocService,
+    private nguoiService: NguoiService,
+    private kyTucXaService: KyTucXaService,
+    private phongService: PhongService,
     private sinhVienService: SinhVienService,
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
@@ -48,16 +64,16 @@ export class GiatLaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    this.getListSinhVien();
+    this.getListNguoiAndKtxAndPhongAndSinhVien();
   }
 
 
   getAll(): void {
-    this.giatLaService.getAll().subscribe((data) => {
+    this.hoaDonDienNuocService.getAll().subscribe((data) => {
       console.log(data);
-      this.giatLaList = data;
-      console.log(this.giatLaList);
-      this.dataSource = new MatTableDataSource<any>(this.giatLaList);
+      this.hoaDonDienNuocList = data;
+      console.log(this.hoaDonDienNuocList);
+      this.dataSource = new MatTableDataSource<any>(this.hoaDonDienNuocList);
       // this.dataSource.paginator = this.paginator;
     });
   }
@@ -65,7 +81,7 @@ export class GiatLaComponent implements OnInit {
 
   // confirm delete
 
-  confirmDialog(giatLa: any): void {
+  confirmDialog(hoaDonDienNuoc: any): void {
     const message = `Are you sure you want to do this?`;
 
     const dialogData = new ConfirmDialogModel('Confirm Action', message);
@@ -78,7 +94,7 @@ export class GiatLaComponent implements OnInit {
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult == true) {
         console.log('delete');
-        this.giatLaService.deleteLanGiat(giatLa.bienSoXe).subscribe(
+        this.hoaDonDienNuocService.deleteHoaDonDienNuoc(hoaDonDienNuoc.maHoaDon).subscribe(
           (data) => {
             this.openSnackBar('Xóa thành công');
             this.getAll();
@@ -91,26 +107,44 @@ export class GiatLaComponent implements OnInit {
     });
   }
 
-  getListSinhVien(){
-    this.sinhVienService.getAll().subscribe((data) => {
+  getListNguoiAndKtxAndPhongAndSinhVien(){
+    this.nguoiService.getAll().subscribe((data) => {
       console.log(data);
+      this.nguoiList = data;
+      console.log(this.nguoiList);
+    });
+
+    this.kyTucXaService.getAll().subscribe((data) => {
+      this.kyTucXaList = data;
+      console.log(this.kyTucXaList);
+    });
+
+    this.sinhVienService.getAll().subscribe((data) => {
       this.sinhVienList = data;
-      console.log(this.sinhVienList);
+      console.log(this.kyTucXaList);
+    });
+
+    this.phongService.getAll().subscribe((data) => {
+      this.phongList = data;
+      console.log(this.kyTucXaList);
     });
   }
 
   openAddDialog() {
-    const dialogRef = this.dialog.open(AddGiatLaComponent, {
+    const dialogRef = this.dialog.open(AddHoaDonDienNuocComponent, {
       data:{
         update: false,
-        giatLa: new Object(),
-        sinhVienList: this.sinhVienList
+        hoaDonDienNuoc: new Object(),
+        nguoiList: this.nguoiList,
+        kyTucXaList: this.kyTucXaList,
+        sinhVienList: this.sinhVienList,
+        phongList: this.phongList
       }});
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log(result);
-        this.giatLaService.createLanGiat(result).subscribe(
+        this.hoaDonDienNuocService.createHoaDonDienNuoc(result).subscribe(
           (data) => {
             this.openSnackBar('Thêm thành công');
             this.getAll();
@@ -130,18 +164,21 @@ export class GiatLaComponent implements OnInit {
 
   openEditDialog(data?: any) {
     // console.log(data)
-    const dialogRef = this.dialog.open(AddGiatLaComponent, {
+    const dialogRef = this.dialog.open(AddHoaDonDienNuocComponent, {
       data: {
         update: true,
-        giatLa: Object.assign(new Object(),data),
-        sinhVienList: this.sinhVienList
+        hoaDonDienNuoc: Object.assign(new Object(),data),
+        nguoiList: this.nguoiList,
+        kyTucXaList: this.kyTucXaList,
+        sinhVienList: this.sinhVienList,
+        phongList: this.phongList
       }
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log(result);
-        this.giatLaService.update(result, result.bienSoXe).subscribe(
+        this.hoaDonDienNuocService.update(result, result.maHoaDon).subscribe(
           (data) => {
             this.openSnackBar('cập nhật thành công');
             this.getAll();
@@ -164,5 +201,4 @@ export class GiatLaComponent implements OnInit {
       verticalPosition: 'top',
     });
   }
-
 }

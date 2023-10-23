@@ -1,1 +1,70 @@
-<p>luot-gui-xe works!</p>
+<main class="content-wrapper">
+  <div class="container p-30">
+      <div class="task-list mb-3">
+          <h1>Quản lý lượt gửi xe</h1>
+      </div>
+
+      <div class="col-12">
+          <button type="button" class="btn btn-success" (click)="openAddDialog()">Thêm lượt gửi xe</button>
+      </div>
+
+      <div class="col-md-12 main-datatable mt-5">
+          <div class="card_body">
+              <div class="mat-elevation-z8">
+                  <table mat-table [dataSource]="dataSource">
+
+                      <!-- Position Column -->
+                      <ng-container matColumnDef="no">
+                          <th mat-header-cell *matHeaderCellDef> No. </th>
+                          <td mat-cell *matCellDef="let element,index as i"> {{i+1}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="maLanGui">
+                          <th mat-header-cell *matHeaderCellDef> Mã lần gửi </th>
+                          <td mat-cell *matCellDef="let element"> {{element.maLanGui}} </td>
+                      </ng-container>
+
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="thoiGianGui">
+                          <th mat-header-cell *matHeaderCellDef> Thời gian gửi </th>
+                          <td mat-cell *matCellDef="let element"> {{element.thoiGianGui | date: 'dd/MM/yyyy hh:mm a'}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="thoiGianLay">
+                          <th mat-header-cell *matHeaderCellDef> Thời gian lấy </th>
+                          <td mat-cell *matCellDef="let element"> {{element.thoiGianLay | date: 'dd/MM/yyyy hh:mm a'}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="bienSoXe">
+                          <th mat-header-cell *matHeaderCellDef> Biển số xe </th>
+                          <td mat-cell *matCellDef="let element"> {{element.bienSoXe}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="maSv">
+                          <th mat-header-cell *matHeaderCellDef> Mã SV </th>
+                          <td mat-cell *matCellDef="let element"> {{element.maSv}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="action">
+                          <th mat-header-cell *matHeaderCellDef> Action </th>
+                          <td mat-cell *matCellDef="let element, index as i">
+                              <button mat-icon-button color="primary" (click)="openEditDialog(element)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                              <button mat-icon-button color="warn" (click)="confirmDialog(element)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                          </td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+
+                  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+                  </mat-paginator> -->
+              </div>
+          </div>
+      </div>
+  </div>
+</main>

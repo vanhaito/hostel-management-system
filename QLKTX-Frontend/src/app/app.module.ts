@@ -31,6 +31,11 @@ import { AddNhanVienQlComponent } from './dialog/add-nhan-vien-ql/add-nhan-vien-
 import { AddHopDongComponent } from './dialog/add-hop-dong/add-hop-dong.component';
 import { LuotThamComponent } from './module/luot-tham/luot-tham.component';
 import { AddLuotThamComponent } from './dialog/add-luot-tham/add-luot-tham.component';
+import { AddVeXeComponent } from './dialog/add-ve-xe/add-ve-xe.component';
+import { AddLuotGuiXeComponent } from './dialog/add-luot-gui-xe/add-luot-gui-xe.component';
+import { AddGiatLaComponent } from './dialog/add-giat-la/add-giat-la.component';
+import { HoaDonDienNuocComponent } from './module/hoa-don-dien-nuoc/hoa-don-dien-nuoc.component';
+import { AddHoaDonDienNuocComponent } from './dialog/add-hoa-don-dien-nuoc/add-hoa-don-dien-nuoc.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +61,12 @@ import { AddLuotThamComponent } from './dialog/add-luot-tham/add-luot-tham.compo
     AddNhanVienQlComponent,
     AddHopDongComponent,
     LuotThamComponent,
-    AddLuotThamComponent
+    AddLuotThamComponent,
+    AddVeXeComponent,
+    AddLuotGuiXeComponent,
+    AddGiatLaComponent,
+    HoaDonDienNuocComponent,
+    AddHoaDonDienNuocComponent
   ],
   imports: [
     BrowserModule,

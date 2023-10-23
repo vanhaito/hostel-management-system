@@ -1,0 +1,106 @@
+<main class="content-wrapper">
+  <div class="container p-30">
+    <div class="task-list mb-3">
+      <h1>Quản lý hợp đồng</h1>
+    </div>
+
+    <div class="col-12">
+      <button type="button" class="btn btn-success" (click)="openAddDialog()">Thêm hợp đồng</button>
+    </div>
+
+    <div class="col-md-12 main-datatable mt-5">
+      <div class="card_body">
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="no">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element,index as i"> {{i+1}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="maHoaDon">
+              <th mat-header-cell *matHeaderCellDef> Mã HĐ </th>
+              <td mat-cell *matCellDef="let element"> {{element.maHoaDon}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ngayLapHoaDon">
+              <th mat-header-cell *matHeaderCellDef> Ngày lập </th>
+              <td mat-cell *matCellDef="let element"> {{element.ngayLapHoaDon | date: 'dd/MM/yyyy'}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="chiSoDienDau">
+              <th mat-header-cell *matHeaderCellDef> CS điện đầu </th>
+              <td mat-cell *matCellDef="let element"> {{element.chiSoDienDau}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="chiSoDienCuoi">
+              <th mat-header-cell *matHeaderCellDef> CS điện cuối </th>
+              <td mat-cell *matCellDef="let element"> {{element.chiSoDienCuoi}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="chiSoNuocDau">
+              <th mat-header-cell *matHeaderCellDef> CS nước đầu </th>
+              <td mat-cell *matCellDef="let element"> {{element.chiSoNuocDau}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="chiSoNuocCuoi">
+              <th mat-header-cell *matHeaderCellDef> CS nước cuối </th>
+              <td mat-cell *matCellDef="let element"> {{element.chiSoNuocCuoi}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="donGiaDien">
+              <th mat-header-cell *matHeaderCellDef> ĐG điện </th>
+              <td mat-cell *matCellDef="let element"> {{element.donGiaDien}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="donGiaNuoc">
+              <th mat-header-cell *matHeaderCellDef> ĐG nước </th>
+              <td mat-cell *matCellDef="let element"> {{element.donGiaNuoc}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ngayBatDau">
+              <th mat-header-cell *matHeaderCellDef> Ngày bắt đầu </th>
+              <td mat-cell *matCellDef="let element"> {{element.ngayBatDau | date: 'dd/MM/yyyy'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ngayKetThuc">
+              <th mat-header-cell *matHeaderCellDef> Ngày kết thúc </th>
+              <td mat-cell *matCellDef="let element"> {{element.ngayKetThuc | date: 'dd/MM/yyyy'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tenKtx">
+              <th mat-header-cell *matHeaderCellDef> Ktx </th>
+              <td mat-cell *matCellDef="let element"> {{element.tenKtx}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tenPhong">
+              <th mat-header-cell *matHeaderCellDef> Phòng </th>
+              <td mat-cell *matCellDef="let element"> {{element.tenPhong}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element, index as i">
+                <button mat-icon-button color="primary" (click)="openEditDialog(element)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="confirmDialog(element)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+                  </mat-paginator> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

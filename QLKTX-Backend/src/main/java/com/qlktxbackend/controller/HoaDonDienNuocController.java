@@ -17,7 +17,7 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping("/hoaDonDienNuoc")
+@RequestMapping("/hoa-don-dien-nuoc")
 public class HoaDonDienNuocController {
 
     @Autowired

@@ -1,0 +1,70 @@
+<div class="container">
+  <h1 mat-dialog-title *ngIf="data.update">Cập nhật vé xe</h1>
+  <h1 mat-dialog-title *ngIf="!data.update">Thêm mới vé xe</h1>
+
+  <div mat-dialog-content>
+    <form [formGroup]="formControl">
+
+      <div class="form">
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Mã hợp đồng</mat-label>
+            <input matInput type="text" formControlName="bienSoXe" [(ngModel)]="data.veXe.bienSoXe" [readonly]="data.update">
+            <mat-error *ngIf="
+  formControl.controls['bienSoXe']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Mã hợp đồng</mat-label>
+          <input matInput type="text" formControlName="loaiXe" [(ngModel)]="data.veXe.loaiXe">
+          <mat-error *ngIf="
+formControl.controls['loaiXe']?.errors?.required">field required</mat-error>
+      </mat-form-field>
+  </div>
+
+  <div class="form">
+    <mat-form-field class="fullWidth" appearance="outline">
+        <mat-label>Màu xe</mat-label>
+        <input matInput type="text" formControlName="mauXe" [(ngModel)]="data.veXe.mauXe">
+        <mat-error *ngIf="
+formControl.controls['mauXe']?.errors?.required">field required</mat-error>
+    </mat-form-field>
+</div>
+
+<div class="form">
+  <mat-form-field class="fullWidth" appearance="outline">
+      <mat-label>Trạng thái</mat-label>
+      <input matInput type="text" formControlName="trangThai" [(ngModel)]="data.veXe.trangThai">
+      <mat-error *ngIf="
+formControl.controls['trangThai']?.errors?.required">field required</mat-error>
+  </mat-form-field>
+</div>
+
+      <div class="mt-2 form">
+        <mat-form-field class="fullWidth" appearance="outline">
+          <mat-label>Mã SV</mat-label>
+          <mat-select [(ngModel)]="data.veXe.maSv" formControlName='maSv'>
+            <!-- <mat-option>
+                        <ngx-mat-select-search formControlName="maSoDinhDanhS"></ngx-mat-select-search>
+                    </mat-option> -->
+            <mat-option *ngFor="let item of data.sinhVienList" [value]="item.maSv">
+              {{item.maSv}}-{{item.maSoDinhDanhS}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+          formControl.controls['maSv']?.errors?.required">field required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+    </form>
+  </div>
+
+
+  <div class="mt-2" mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="!formControl.valid" (click)="edit()"
+      cdkFocusInitial>Yes</button>
+    <button mat-raised-button mat-dialog-close>No</button>
+
+  </div>
+</div>

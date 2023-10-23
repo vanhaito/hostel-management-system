@@ -10,6 +10,10 @@ import { NhanVienQuanLyComponent } from './module/nhan-vien-quan-ly/nhan-vien-qu
 import { HopDongComponent } from './module/hop-dong/hop-dong.component';
 import { LuotThamComponent } from './module/luot-tham/luot-tham.component';
 import { PhongComponent } from './module/phong/phong.component';
+import { VeXeComponent } from './module/ve-xe/ve-xe.component';
+import { LuotGuiXeComponent } from './module/luot-gui-xe/luot-gui-xe.component';
+import { GiatLaComponent } from './module/giat-la/giat-la.component';
+import { HoaDonDienNuocComponent } from './module/hoa-don-dien-nuoc/hoa-don-dien-nuoc.component';
 
 const routes: Routes = [
   {path: '',component: AppComponent},
@@ -23,6 +27,10 @@ const routes: Routes = [
   {path: 'phong',component: PhongComponent},
   {path: 'hop-dong',component: HopDongComponent},
   {path: 'luot-tham',component: LuotThamComponent},
+  {path: 've-xe',component: VeXeComponent},
+  {path: 'lan-gui-xe',component: LuotGuiXeComponent},
+  {path: 'luot-giat',component: GiatLaComponent},
+  {path: 'hoa-don-dien-nuoc',component: HoaDonDienNuocComponent},
 ];
 
 @NgModule({
