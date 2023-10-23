@@ -8,6 +8,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/dialog/confi
 import { HopDongService } from 'src/service/hop-dong.service';
 import { KyTucXaService } from 'src/service/ky-tuc-xa.service';
 import { NguoiService } from 'src/service/nguoi.service';
+import { NhanVienQlService } from 'src/service/nhan-vien-ql.service';
 import { PhongService } from 'src/service/phong.service';
 import { SinhVienService } from 'src/service/sinh-vien.service';
 
@@ -23,8 +24,8 @@ export class HopDongComponent implements OnInit {
   formSearch!: FormGroup;
 
   hopDongList: any[] = [];
-  nguoiList: any[] = [];
-  kyTucXaList: any[] = [];
+  nhanVienQlList: any[] = [];
+  // kyTucXaList: any[] = [];
   phongList: any[] = [];
   sinhVienList: any[] = [];
 
@@ -49,8 +50,8 @@ export class HopDongComponent implements OnInit {
 
   constructor(
     private hopDongService: HopDongService,
-    private nguoiService: NguoiService,
-    private kyTucXaService: KyTucXaService,
+    private nhanVienQlService: NhanVienQlService,
+    // private kyTucXaService: KyTucXaService,
     private phongService: PhongService,
     private sinhVienService: SinhVienService,
     public dialog: MatDialog,
@@ -104,25 +105,23 @@ export class HopDongComponent implements OnInit {
   }
 
   getListNguoiAndKtxAndPhongAndSinhVien(){
-    this.nguoiService.getAll().subscribe((data) => {
+    this.nhanVienQlService.getAll().subscribe((data) => {
       console.log(data);
-      this.nguoiList = data;
-      console.log(this.nguoiList);
+      this.nhanVienQlList = data;
+      console.log(this.nhanVienQlList);
     });
 
-    this.kyTucXaService.getAll().subscribe((data) => {
-      this.kyTucXaList = data;
-      console.log(this.kyTucXaList);
-    });
+    // this.kyTucXaService.getAll().subscribe((data) => {
+    //   this.kyTucXaList = data;
+    //   console.log(this.kyTucXaList);
+    // });
 
     this.sinhVienService.getAll().subscribe((data) => {
       this.sinhVienList = data;
-      console.log(this.kyTucXaList);
     });
 
     this.phongService.getAll().subscribe((data) => {
       this.phongList = data;
-      console.log(this.kyTucXaList);
     });
   }
 
@@ -131,8 +130,8 @@ export class HopDongComponent implements OnInit {
       data:{
         update: false,
         hopDong: new Object(),
-        nguoiList: this.nguoiList,
-        kyTucXaList: this.kyTucXaList,
+        nhanVienQlList: this.nhanVienQlList,
+        // kyTucXaList: this.kyTucXaList,
         sinhVienList: this.sinhVienList,
         phongList: this.phongList
       }});
@@ -148,8 +147,8 @@ export class HopDongComponent implements OnInit {
           (error) => {
             console.log(error)
         var mess = '';
-        if (error.message) {
-          var log = error.message;
+        if (error.error.message) {
+          var log = error.error.message;
           this.openSnackBar('Thêm thất bại: \n' + log);
         } else this.openSnackBar('Thêm thất bại: '+ error.status ? error.status:"");
           }
@@ -164,8 +163,8 @@ export class HopDongComponent implements OnInit {
       data: {
         update: true,
         hopDong: Object.assign(new Object(),data),
-        nguoiList: this.nguoiList,
-        kyTucXaList: this.kyTucXaList,
+        nhanVienQlList: this.nhanVienQlList,
+        // kyTucXaList: this.kyTucXaList,
         sinhVienList: this.sinhVienList,
         phongList: this.phongList
       }

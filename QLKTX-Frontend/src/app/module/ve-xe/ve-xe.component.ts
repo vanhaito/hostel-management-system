@@ -118,8 +118,8 @@ export class VeXeComponent implements OnInit {
           (error) => {
             console.log(error)
         var mess = '';
-        if (error.message) {
-          var log = error.message;
+        if (error.error.message) {
+          var log = error.error.message;
           this.openSnackBar('Thêm thất bại: \n' + log);
         } else this.openSnackBar('Thêm thất bại: '+ error.status ? error.status:"");
           }

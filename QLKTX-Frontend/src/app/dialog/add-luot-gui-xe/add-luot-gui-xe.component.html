@@ -62,20 +62,17 @@
         </mat-form-field>
       </div>
 
-      <div class="mt-2 form">
+      <!-- <div class="mt-2 form">
         <mat-form-field class="fullWidth" appearance="outline">
           <mat-label>Mã SV</mat-label>
           <mat-select [(ngModel)]="data.luotGuiXe.maSv" formControlName='maSv'>
-            <!-- <mat-option>
-                        <ngx-mat-select-search formControlName="maSoDinhDanhS"></ngx-mat-select-search>
-                    </mat-option> -->
             <mat-option *ngFor="let item of data.sinhVienList" [value]="item.maSv">
               {{item.maSv}}-{{item.maSoDinhDanhS}}</mat-option>
           </mat-select>
           <mat-error *ngIf="
           formControl.controls['maSv']?.errors?.required">field required</mat-error>
         </mat-form-field>
-      </div>
+      </div> -->
 
     </form>
   </div>

@@ -27,7 +27,7 @@ public class LanGuiXe implements Serializable {
     @Column(name = "bien_so_xe", nullable = false)
     private String bienSoXe;
 
-    @Column(name = "ma_SV", nullable = false)
-    private String maSv;
+//    @Column(name = "ma_SV", nullable = false)
+//    private String maSv;
 
 }

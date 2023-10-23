@@ -5,7 +5,9 @@ import com.qlktxbackend.dto.request.VeXeUpdateRequestDTO;
 import com.qlktxbackend.dto.response.NguoiResponseDTO;
 import com.qlktxbackend.dto.response.VeXeResponseDTO;
 import com.qlktxbackend.entities.VeXe;
+import com.qlktxbackend.helpers.exceptions.SystemException;
 import com.qlktxbackend.repository.VeXeRepository;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,10 +23,14 @@ public class VeXeServiceImpl {
     private VeXeRepository veXeRepository;
 
     public VeXeResponseDTO save(VeXeRequestDTO requestDTO) {
-        VeXe bean = new VeXe();
-        BeanUtils.copyProperties(requestDTO, bean);
-        bean = veXeRepository.save(bean);
-        return toResponseDTO(bean);
+        try {
+            VeXe bean = new VeXe();
+            BeanUtils.copyProperties(requestDTO, bean);
+            bean = veXeRepository.save(bean);
+            return toResponseDTO(bean);
+        }catch (Exception exception){
+            throw new SystemException(ExceptionUtils.getRootCause(exception).getMessage());
+        }
     }
 
     public boolean delete(String id) {

@@ -15,6 +15,6 @@ public class LanGuiXeResponseDTO {
 
     private String bienSoXe;
 
-    private String maSv;
+//    private String maSv;
 
 }

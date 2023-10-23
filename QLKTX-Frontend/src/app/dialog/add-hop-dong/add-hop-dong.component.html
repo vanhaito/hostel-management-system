@@ -1,11 +1,11 @@
 <div class="container">
-  <h1 mat-dialog-title *ngIf="data.update">Cập nhật sinh viên</h1>
-  <h1 mat-dialog-title *ngIf="!data.update">Thêm mới sinh viên</h1>
+  <h1 mat-dialog-title *ngIf="data.update">Cập nhật hợp đồng</h1>
+  <h1 mat-dialog-title *ngIf="!data.update">Thêm mới hợp đồng</h1>
 
   <div mat-dialog-content>
     <form [formGroup]="formControl">
 
-      <div class="form">
+      <div class="form" *ngIf="data.update">
         <mat-form-field class="fullWidth" appearance="outline">
             <mat-label>Mã hợp đồng</mat-label>
             <input matInput type="text" formControlName="maHopDong" [(ngModel)]="data.hopDong.maHopDong" [readonly]="data.update">
@@ -59,8 +59,8 @@
             <!-- <mat-option>
                         <ngx-mat-select-search formControlName="maSoDinhDanhS"></ngx-mat-select-search>
                     </mat-option> -->
-            <mat-option *ngFor="let item of data.nguoiList" [value]="item.maSoDinhDanh">
-              {{item.maSoDinhDanh}}-{{item.hoTen}}</mat-option>
+            <mat-option *ngFor="let item of data.nhanVienQlList" [value]="item.maSoDinhDanhN">
+              {{item.maSoDinhDanhN}}-{{item.tenKyTucXa}}</mat-option>
           </mat-select>
           <mat-error *ngIf="
           formControl.controls['maSoDinhDanhN']?.errors?.required">field required</mat-error>
@@ -70,19 +70,18 @@
 
       <div class="mt-2 form">
         <mat-form-field class="fullWidth" appearance="outline">
-            <mat-label>Tên ký túc xá</mat-label>
-            <mat-select [(ngModel)]="data.hopDong.tenKtx"
-                formControlName='tenKtx'>
-                <!-- <mat-option>
+          <mat-label>Tên phòng</mat-label>
+          <mat-select [disabled]="data.update" [(ngModel)]="phong" formControlName='phong'>
+            <!-- <mat-option>
                     <ngx-mat-select-search formControlName="maSoDinhDanhS"></ngx-mat-select-search>
                 </mat-option> -->
-                <mat-option *ngFor="let item of data.kyTucXaList" [value]="item.tenKyTucXa">
-                    {{item.tenKyTucXa}}</mat-option>
-            </mat-select>
-            <mat-error *ngIf="
-      formControl.controls['tenKtx']?.errors?.required">field required</mat-error>
+            <mat-option *ngFor="let item of data.phongList" [value]="item">
+              {{item.tenKyTucXa}} - {{item.tenPhong}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="
+      formControl.controls['phong']?.errors?.required">field required</mat-error>
         </mat-form-field>
-    </div>
+      </div>
 
 
     </form>

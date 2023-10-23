@@ -7,7 +7,7 @@
 
       <div class="form">
         <mat-form-field class="fullWidth" appearance="outline">
-            <mat-label>Mã hợp đồng</mat-label>
+            <mat-label>Biển số xe</mat-label>
             <input matInput type="text" formControlName="bienSoXe" [(ngModel)]="data.veXe.bienSoXe" [readonly]="data.update">
             <mat-error *ngIf="
   formControl.controls['bienSoXe']?.errors?.required">field required</mat-error>
@@ -16,7 +16,7 @@
 
     <div class="form">
       <mat-form-field class="fullWidth" appearance="outline">
-          <mat-label>Mã hợp đồng</mat-label>
+          <mat-label>Loại xe</mat-label>
           <input matInput type="text" formControlName="loaiXe" [(ngModel)]="data.veXe.loaiXe">
           <mat-error *ngIf="
 formControl.controls['loaiXe']?.errors?.required">field required</mat-error>

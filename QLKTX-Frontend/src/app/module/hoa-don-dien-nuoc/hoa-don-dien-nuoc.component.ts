@@ -6,10 +6,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AddHoaDonDienNuocComponent } from 'src/app/dialog/add-hoa-don-dien-nuoc/add-hoa-don-dien-nuoc.component';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/dialog/confirm-dialog/confirm-dialog.component';
 import { HoaDonDienNuocService } from 'src/service/hoa-don-dien-nuoc.service';
-import { KyTucXaService } from 'src/service/ky-tuc-xa.service';
-import { NguoiService } from 'src/service/nguoi.service';
+// import { KyTucXaService } from 'src/service/ky-tuc-xa.service';
+// import { NguoiService } from 'src/service/nguoi.service';
 import { PhongService } from 'src/service/phong.service';
-import { SinhVienService } from 'src/service/sinh-vien.service';
+// import { SinhVienService } from 'src/service/sinh-vien.service';
 
 @Component({
   selector: 'app-hoa-don-dien-nuoc',
@@ -22,10 +22,10 @@ export class HoaDonDienNuocComponent implements OnInit {
   formSearch!: FormGroup;
 
   hoaDonDienNuocList: any[] = [];
-  nguoiList: any[] = [];
-  kyTucXaList: any[] = [];
+  // nguoiList: any[] = [];
+  // kyTucXaList: any[] = [];
   phongList: any[] = [];
-  sinhVienList: any[] = [];
+  // sinhVienList: any[] = [];
 
   displayedColumns: string[] = [
     'no',
@@ -53,10 +53,10 @@ export class HoaDonDienNuocComponent implements OnInit {
 
   constructor(
     private hoaDonDienNuocService: HoaDonDienNuocService,
-    private nguoiService: NguoiService,
-    private kyTucXaService: KyTucXaService,
+    // private nguoiService: NguoiService,
+    // private kyTucXaService: KyTucXaService,
     private phongService: PhongService,
-    private sinhVienService: SinhVienService,
+    // private sinhVienService: SinhVienService,
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     private formBuilder: FormBuilder
@@ -64,7 +64,7 @@ export class HoaDonDienNuocComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    this.getListNguoiAndKtxAndPhongAndSinhVien();
+    this.getListPhong();
   }
 
 
@@ -107,26 +107,26 @@ export class HoaDonDienNuocComponent implements OnInit {
     });
   }
 
-  getListNguoiAndKtxAndPhongAndSinhVien(){
-    this.nguoiService.getAll().subscribe((data) => {
-      console.log(data);
-      this.nguoiList = data;
-      console.log(this.nguoiList);
-    });
+  getListPhong(){
+    // this.nguoiService.getAll().subscribe((data) => {
+    //   console.log(data);
+    //   this.nguoiList = data;
+    //   console.log(this.nguoiList);
+    // });
 
-    this.kyTucXaService.getAll().subscribe((data) => {
-      this.kyTucXaList = data;
-      console.log(this.kyTucXaList);
-    });
+    // this.kyTucXaService.getAll().subscribe((data) => {
+    //   this.kyTucXaList = data;
+    //   console.log(this.kyTucXaList);
+    // });
 
-    this.sinhVienService.getAll().subscribe((data) => {
-      this.sinhVienList = data;
-      console.log(this.kyTucXaList);
-    });
+    // this.sinhVienService.getAll().subscribe((data) => {
+    //   this.sinhVienList = data;
+    //   console.log(this.kyTucXaList);
+    // });
 
     this.phongService.getAll().subscribe((data) => {
       this.phongList = data;
-      console.log(this.kyTucXaList);
+      console.log(this.phongList);
     });
   }
 
@@ -135,9 +135,9 @@ export class HoaDonDienNuocComponent implements OnInit {
       data:{
         update: false,
         hoaDonDienNuoc: new Object(),
-        nguoiList: this.nguoiList,
-        kyTucXaList: this.kyTucXaList,
-        sinhVienList: this.sinhVienList,
+        // nguoiList: this.nguoiList,
+        // kyTucXaList: this.kyTucXaList,
+        // sinhVienList: this.sinhVienList,
         phongList: this.phongList
       }});
 
@@ -168,9 +168,9 @@ export class HoaDonDienNuocComponent implements OnInit {
       data: {
         update: true,
         hoaDonDienNuoc: Object.assign(new Object(),data),
-        nguoiList: this.nguoiList,
-        kyTucXaList: this.kyTucXaList,
-        sinhVienList: this.sinhVienList,
+        // nguoiList: this.nguoiList,
+        // kyTucXaList: this.kyTucXaList,
+        // sinhVienList: this.sinhVienList,
         phongList: this.phongList
       }
     });

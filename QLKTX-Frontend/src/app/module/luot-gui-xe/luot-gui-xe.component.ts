@@ -29,7 +29,7 @@ export class LuotGuiXeComponent implements OnInit {
     "thoiGianGui",
     "thoiGianLay",
     "bienSoXe",
-    "maSv",
+    // "maSv",
     "action"
   ];
   dataSource = new MatTableDataSource<any>();

@@ -32,7 +32,7 @@ makeForm(){
       "thoiGianGui": new FormControl('',Validators.required),
       "thoiGianLay": new FormControl('',Validators.required),
       "bienSoXe": new FormControl('',Validators.required),
-      "maSv": new FormControl('',Validators.required),
+      // "maSv": new FormControl('',Validators.required),
   });
 }
 

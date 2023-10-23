@@ -18,7 +18,7 @@ public class LanGuiXeRequestDTO {
     @NotNull(message = "bienSoXe can not null")
     private String bienSoXe;
 
-    @NotNull(message = "maSv can not null")
-    private String maSv;
+//    @NotNull(message = "maSv can not null")
+//    private String maSv;
 
 }

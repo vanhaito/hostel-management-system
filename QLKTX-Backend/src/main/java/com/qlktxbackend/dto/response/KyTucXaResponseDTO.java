@@ -9,6 +9,6 @@ public class KyTucXaResponseDTO {
 
     private Integer soLuongPhong;
 
-    private Integer diaChi;
+    private String diaChi;
 
 }
