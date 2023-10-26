@@ -104,7 +104,7 @@ export class LuotThamComponent implements OnInit {
       console.log(this.khachList);
     });
 
-    this.sinhVienService.getAll().subscribe((data) => {
+    this.sinhVienService.getAllDaKyHD().subscribe((data) => {
       console.log(data);
       this.sinhVienList = data;
       console.log(this.sinhVienList);

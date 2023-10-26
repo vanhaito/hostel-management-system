@@ -95,7 +95,7 @@ export class LuotGuiXeComponent implements OnInit {
   }
 
   getListSinhVien(){
-    this.sinhVienService.getAll().subscribe((data) => {
+    this.sinhVienService.getAllDaKyHD().subscribe((data) => {
       console.log(data);
       this.sinhVienList = data;
       console.log(this.sinhVienList);

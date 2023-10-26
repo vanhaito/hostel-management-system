@@ -15,6 +15,16 @@ export class SinhVienService {
     return this.httpClient.get<any>(url);
   }
 
+  getAllDaKyHD(){
+    const url = `${this.baseUrl}/get-all-da-hd`;
+    return this.httpClient.get<any>(url);
+  }
+
+  getAllChuaKyHD(){
+    const url = `${this.baseUrl}/get-all-chua-hd`;
+    return this.httpClient.get<any>(url);
+  }
+
   getSinhVienById(id: number){
     const url = `${this.baseUrl}/${id}`;
     return this.httpClient.get<any>(url);

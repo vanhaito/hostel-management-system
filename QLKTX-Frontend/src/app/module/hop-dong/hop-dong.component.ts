@@ -116,7 +116,7 @@ export class HopDongComponent implements OnInit {
     //   console.log(this.kyTucXaList);
     // });
 
-    this.sinhVienService.getAll().subscribe((data) => {
+    this.sinhVienService.getAllChuaKyHD().subscribe((data) => {
       this.sinhVienList = data;
     });
 

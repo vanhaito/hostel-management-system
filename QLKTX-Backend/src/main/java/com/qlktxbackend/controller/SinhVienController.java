@@ -47,6 +47,16 @@ public class SinhVienController {
         return sinhVienServiceImpl.getAll();
     }
 
+    @GetMapping("/get-all-da-hd")
+    public List<SinhVienResponseDTO> getAllDaKyHD() {
+        return sinhVienServiceImpl.getAllSVKyHopDong();
+    }
+
+    @GetMapping("/get-all-chua-hd")
+    public List<SinhVienResponseDTO> getAllChuaKyHD() {
+        return sinhVienServiceImpl.getAllSVChuaKyHopDong();
+    }
+
 //    @GetMapping
 //    public Page<SinhVienResponseDTO> query(@Valid SinhVienQueryRequestDTO requestDTO) {
 //        return sinhVienService.query(requestDTO);

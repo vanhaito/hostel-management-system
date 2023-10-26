@@ -43,6 +43,15 @@ public class SinhVienServiceImpl {
         return sinhVienRepository.findAll().stream().map(this::toResponseDTO).collect(Collectors.toList());
     }
 
+    public List<SinhVienResponseDTO> getAllSVKyHopDong() {
+        return sinhVienRepository.findAllSinhVienKyHopDong().stream().map(this::toResponseDTO).collect(Collectors.toList());
+    }
+
+    public List<SinhVienResponseDTO> getAllSVChuaKyHopDong() {
+        return sinhVienRepository.findAllSinhVienChuaKyHopDong().stream().map(this::toResponseDTO).collect(Collectors.toList());
+    }
+
+
     public SinhVienResponseDTO getById(String id) {
         SinhVien original = requireOne(id);
         return toResponseDTO(original);
