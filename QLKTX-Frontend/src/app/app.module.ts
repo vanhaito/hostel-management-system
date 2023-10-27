@@ -37,6 +37,7 @@ import { AddGiatLaComponent } from './dialog/add-giat-la/add-giat-la.component';
 import { HoaDonDienNuocComponent } from './module/hoa-don-dien-nuoc/hoa-don-dien-nuoc.component';
 import { AddHoaDonDienNuocComponent } from './dialog/add-hoa-don-dien-nuoc/add-hoa-don-dien-nuoc.component';
 import { ThongKeKhachTheoThangComponent } from './module/thong-ke-khach-theo-thang/thong-ke-khach-theo-thang.component';
+import { ThongKeDienNuocPhongTheoThangComponent } from './module/thong-ke-dien-nuoc-phong-theo-thang/thong-ke-dien-nuoc-phong-theo-thang.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { ThongKeKhachTheoThangComponent } from './module/thong-ke-khach-theo-tha
     AddGiatLaComponent,
     HoaDonDienNuocComponent,
     AddHoaDonDienNuocComponent,
-    ThongKeKhachTheoThangComponent
+    ThongKeKhachTheoThangComponent,
+    ThongKeDienNuocPhongTheoThangComponent
   ],
   imports: [
     BrowserModule,

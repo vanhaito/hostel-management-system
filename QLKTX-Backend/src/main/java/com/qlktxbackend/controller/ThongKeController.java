@@ -1,5 +1,7 @@
 package com.qlktxbackend.controller;
 
+import com.qlktxbackend.repository.custom.entity.DienNuocPhongTheoThang;
+import com.qlktxbackend.repository.custom.entity.KhachTheoThang;
 import com.qlktxbackend.service.impl.ThongKeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Map;
 
 @Validated
 @RestController
@@ -22,12 +25,12 @@ public class ThongKeController {
 
 
     @GetMapping("/khach-theo-thang/{month}/{year}")
-    public List getThongKeKhachTheoThang(@Valid @NotNull @PathVariable("month") Integer month,@Valid @NotNull @PathVariable Integer year) {
+    public List<KhachTheoThang> getThongKeKhachTheoThang(@Valid @NotNull @PathVariable("month") Integer month, @Valid @NotNull @PathVariable Integer year) {
         return thongKeService.getThongKeKhachTheoThang(month, year);
     }
 
     @GetMapping("/dien-nuoc-theo-thang/{month}/{year}")
-    public List getThongKeTienDienNuocTheoThang(@Valid @NotNull @PathVariable("month") Integer month,@Valid @NotNull @PathVariable Integer year) {
+    public List<DienNuocPhongTheoThang>  getThongKeTienDienNuocTheoThang(@Valid @NotNull @PathVariable("month") Integer month, @Valid @NotNull @PathVariable Integer year) {
         return thongKeService.getThongKeTienDienNuocTheoThang(month, year);
     }
 }

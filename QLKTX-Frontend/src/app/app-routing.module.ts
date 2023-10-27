@@ -15,6 +15,7 @@ import { LuotGuiXeComponent } from './module/luot-gui-xe/luot-gui-xe.component';
 import { GiatLaComponent } from './module/giat-la/giat-la.component';
 import { HoaDonDienNuocComponent } from './module/hoa-don-dien-nuoc/hoa-don-dien-nuoc.component';
 import { ThongKeKhachTheoThangComponent } from './module/thong-ke-khach-theo-thang/thong-ke-khach-theo-thang.component';
+import { ThongKeDienNuocPhongTheoThangComponent } from './module/thong-ke-dien-nuoc-phong-theo-thang/thong-ke-dien-nuoc-phong-theo-thang.component';
 
 const routes: Routes = [
   {path: '',component: AppComponent},
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'luot-giat',component: GiatLaComponent},
   {path: 'hoa-don-dien-nuoc',component: HoaDonDienNuocComponent},
   {path: 'thong-ke-khach',component: ThongKeKhachTheoThangComponent},
+  {path: 'thong-ke-dien-nuoc-thang',component: ThongKeDienNuocPhongTheoThangComponent},
 ];
 
 @NgModule({

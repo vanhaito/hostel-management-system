@@ -1,37 +1,20 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
-import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepicker } from '@angular/material/datepicker';
 import { MatDialog } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import * as moment from 'moment';
 import { Moment } from 'moment';
-import { AddSinhVienComponent } from 'src/app/dialog/add-sinh-vien/add-sinh-vien.component';
-import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/dialog/confirm-dialog/confirm-dialog.component';
-import { NguoiService } from 'src/service/nguoi.service';
-import { SinhVienService } from 'src/service/sinh-vien.service';
 import { ThongKeService } from 'src/service/thong-ke.service';
-
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'MM/YYYY',
-  },
-  display: {
-    dateInput: 'MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
+import { MY_FORMATS } from '../thong-ke-khach-theo-thang/thong-ke-khach-theo-thang.component';
 
 @Component({
-  selector: 'app-thong-ke-khach-theo-thang',
-  templateUrl: './thong-ke-khach-theo-thang.component.html',
-  styleUrls: ['./thong-ke-khach-theo-thang.component.scss'],
+  selector: 'app-thong-ke-dien-nuoc-phong-theo-thang',
+  templateUrl: './thong-ke-dien-nuoc-phong-theo-thang.component.html',
+  styleUrls: ['./thong-ke-dien-nuoc-phong-theo-thang.component.scss'],
   providers: [
     // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
     // application's root module. We provide it at the component level here, due to limitations of
@@ -44,16 +27,8 @@ export const MY_FORMATS = {
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
   encapsulation: ViewEncapsulation.None,
-  // standalone: true,
-  // imports: [
-  //   MatFormFieldModule,
-  //   MatInputModule,
-  //   MatDatepickerModule,
-  //   FormsModule,
-  //   ReactiveFormsModule,
-  // ],
 })
-export class ThongKeKhachTheoThangComponent implements OnInit {
+export class ThongKeDienNuocPhongTheoThangComponent implements OnInit {
   resultComfirm: string = '';
   formSearch!: FormGroup;
 
@@ -61,16 +36,13 @@ export class ThongKeKhachTheoThangComponent implements OnInit {
 
   displayedColumns: string[] = [
     'no',
-    "maSv",
-    "lop",
-    "maSoDinhDanhS",
-    "maSoDinhDanhK",
-    "ngheNghiep",
-    "hoTen",
-    "gioiTinh",
-    "ngaySinh",
-    "diaChiThuongChu",
-    "soLuotTham",
+    "tenKyTucXa",
+    "tenPhong",
+    "soSvHienCo",
+    "tang",
+    "maLoaiPhong",
+    "tienDien",
+    "tienNuoc"
   ];
   dataSource = new MatTableDataSource<any>();
 
@@ -94,7 +66,7 @@ export class ThongKeKhachTheoThangComponent implements OnInit {
 
   onSearch(){
     var date = new Date(this.formSearch.controls['dateTime'].value!);
-    this.thongKeService.getThongKeKhachTheoThang(date.getMonth()+1, date.getFullYear()).subscribe((data) => {
+    this.thongKeService.getThongKeTienDienNuocTheoThang(date.getMonth()+1, date.getFullYear()).subscribe((data) => {
       console.log(data);
       this.dataList = data;
       console.log(this.dataList);
