@@ -50,11 +50,11 @@ public class ThongKeRepository {
     public List<DienNuocPhongTheoThang> thongKeTienDienNuocTheoThang(Integer month, Integer year){
         String sqlBuilder = "select p.ten_ky_tuc_xa tenKyTucXa, p.ten_phong tenPhong, p.so_SV_hien_co soSvHienCo " +
                 ", p.tang , p.ma_loai_phong maLoaiPhong " +
-                ", hddn.ngay_bat_dau ngayBatDau, hddn.ngay_ket_thuc ngayKetThuc" +
+                ", hddn.ngay_bat_dau ngayBatDau, hddn.ngay_ket_thuc ngayKetThuc, hddn.ngay_lap_hoa_don ngayLapHD " +
                 ", IFNULL((hddn.chi_so_dien_cuoi - hddn.chi_so_dien_dau) * hddn.don_gia_dien, 0) as tienDien " +
                 ", IFNULL((hddn.chi_so_nuoc_cuoi - hddn.chi_so_nuoc_dau) * hddn.don_gia_nuoc, 0) as tienNuoc " +
                 "from phong p left join(select * from hoa_don_dien_nuoc where MONTH(ngay_ket_thuc) = :month and YEAR(ngay_ket_thuc) = :year) hddn " +
-                "on p.ten_ky_tuc_xa = hddn.ten_ktx and p.ten_phong = hddn.ten_phong where hddn.ma_hoa_don is not null ";
+                "on p.ten_ky_tuc_xa = hddn.ten_ktx and p.ten_phong = hddn.ten_phong ";
         Query query = entityManager.createNativeQuery(sqlBuilder).unwrap(NativeQuery.class)
                 .addScalar("tenKyTucXa", StandardBasicTypes.STRING)
                 .addScalar("tenPhong", StandardBasicTypes.STRING)
@@ -63,6 +63,7 @@ public class ThongKeRepository {
                 .addScalar("maLoaiPhong", StandardBasicTypes.STRING)
                 .addScalar("ngayBatDau", StandardBasicTypes.DATE)
                 .addScalar("ngayKetThuc", StandardBasicTypes.DATE)
+                .addScalar("ngayLapHD", StandardBasicTypes.DATE)
                 .addScalar("tienDien", StandardBasicTypes.DOUBLE)
                 .addScalar("tienNuoc", StandardBasicTypes.DOUBLE)
                 .setResultTransformer(Transformers.aliasToBean(DienNuocPhongTheoThang.class));

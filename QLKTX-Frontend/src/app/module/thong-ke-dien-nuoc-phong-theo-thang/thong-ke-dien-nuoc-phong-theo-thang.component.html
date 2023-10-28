@@ -61,6 +61,21 @@
               <td mat-cell *matCellDef="let element"> {{element.maLoaiPhong}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="ngayBatDau">
+              <th mat-header-cell *matHeaderCellDef> Ngày bắt đầu </th>
+              <td mat-cell *matCellDef="let element"> {{element.ngayBatDau | date: 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ngayKetThuc">
+            <th mat-header-cell *matHeaderCellDef> Ngày kết thúc </th>
+            <td mat-cell *matCellDef="let element"> {{element.ngayKetThuc | date: 'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="ngayLapHD">
+          <th mat-header-cell *matHeaderCellDef> Ngày lập hóa đơn </th>
+          <td mat-cell *matCellDef="let element"> {{element.ngayLapHD | date: 'dd/MM/yyyy'}} </td>
+      </ng-container>
+
             <ng-container matColumnDef="tienDien">
               <th mat-header-cell *matHeaderCellDef> Tiền điện </th>
               <td mat-cell *matCellDef="let element"> {{element.tienDien}} </td>

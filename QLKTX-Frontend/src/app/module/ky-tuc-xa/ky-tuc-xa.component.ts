@@ -73,7 +73,7 @@ export class KyTucXaComponent implements OnInit {
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult == true) {
         console.log('delete');
-        this.kyTucXaService.deleteKyTucXa(kyTucXa.maSoDinhDanhS).subscribe(
+        this.kyTucXaService.deleteKyTucXa(kyTucXa.tenKyTucXa).subscribe(
           (data) => {
             this.openSnackBar('Xóa thành công');
             this.getAll();
@@ -127,7 +127,7 @@ export class KyTucXaComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log(result);
-        this.kyTucXaService.update(result, result.maSoDinhDanhS).subscribe(
+        this.kyTucXaService.update(result, result.tenKyTucXa).subscribe(
           (data) => {
             this.openSnackBar('cập nhật thành công');
             this.getAll();

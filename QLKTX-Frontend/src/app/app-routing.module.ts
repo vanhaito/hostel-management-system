@@ -18,11 +18,13 @@ import { ThongKeKhachTheoThangComponent } from './module/thong-ke-khach-theo-tha
 import { ThongKeDienNuocPhongTheoThangComponent } from './module/thong-ke-dien-nuoc-phong-theo-thang/thong-ke-dien-nuoc-phong-theo-thang.component';
 import { ThongKeTienDichVuSvTheoThangComponent } from './module/thong-ke-tien-dich-vu-sv-theo-thang/thong-ke-tien-dich-vu-sv-theo-thang.component';
 import { ThongKeTongTienSvTheoThangComponent } from './module/thong-ke-tong-tien-sv-theo-thang/thong-ke-tong-tien-sv-theo-thang.component';
+import { NguoiSdtComponent } from './module/nguoi-sdt/nguoi-sdt.component';
 
 const routes: Routes = [
   {path: '',component: AppComponent},
   {path: 'home',component: AppComponent},
   {path: 'nguoi',component: NguoiComponent},
+  {path: 'nguoi-sdt',component: NguoiSdtComponent},
   {path: 'sinh-vien',component: SinhVienComponent},
   {path: 'loai-phong',component: LoaiPhongComponent},
   {path: 'ky-tuc-xa',component: KyTucXaComponent},

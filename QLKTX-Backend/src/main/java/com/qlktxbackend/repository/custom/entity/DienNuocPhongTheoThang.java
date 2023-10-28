@@ -17,6 +17,7 @@ public class DienNuocPhongTheoThang {
     private String maLoaiPhong;
     private Date ngayBatDau;
     private Date ngayKetThuc;
+    private Date ngayLapHD;
     private Double tienDien;
     private Double tienNuoc;
 }

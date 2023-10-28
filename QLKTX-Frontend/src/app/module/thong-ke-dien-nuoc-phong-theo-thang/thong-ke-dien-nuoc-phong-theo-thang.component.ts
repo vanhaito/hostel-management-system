@@ -41,6 +41,9 @@ export class ThongKeDienNuocPhongTheoThangComponent implements OnInit {
     "soSvHienCo",
     "tang",
     "maLoaiPhong",
+    "ngayBatDau",
+    "ngayKetThuc",
+    "ngayLapHD",
     "tienDien",
     "tienNuoc"
   ];
