@@ -5,7 +5,9 @@ import com.qlktxbackend.dto.request.LanGiatUpdateRequestDTO;
 import com.qlktxbackend.dto.response.LanGiatResponseDTO;
 import com.qlktxbackend.dto.response.NguoiResponseDTO;
 import com.qlktxbackend.entities.LanGiat;
+import com.qlktxbackend.helpers.exceptions.SystemException;
 import com.qlktxbackend.repository.LanGiatRepository;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,10 +23,14 @@ public class LanGiatServiceImpl {
     private LanGiatRepository lanGiatRepository;
 
     public LanGiatResponseDTO save(LanGiatRequestDTO requestDTO) {
+        try {
         LanGiat bean = new LanGiat();
         BeanUtils.copyProperties(requestDTO, bean);
         bean = lanGiatRepository.save(bean);
         return toResponseDTO(bean);
+    }catch (Exception exception){
+        throw new SystemException(ExceptionUtils.getRootCause(exception).getMessage());
+    }
     }
 
     public boolean delete(Integer id) {

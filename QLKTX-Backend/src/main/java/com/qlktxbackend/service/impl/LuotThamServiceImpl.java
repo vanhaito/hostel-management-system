@@ -5,7 +5,9 @@ import com.qlktxbackend.dto.request.LuotThamUpdateRequestDTO;
 import com.qlktxbackend.dto.response.LuotThamResponseDTO;
 import com.qlktxbackend.dto.response.NguoiResponseDTO;
 import com.qlktxbackend.entities.LuotTham;
+import com.qlktxbackend.helpers.exceptions.SystemException;
 import com.qlktxbackend.repository.LuotThamRepository;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,10 +23,14 @@ public class LuotThamServiceImpl {
     private LuotThamRepository luotThamRepository;
 
     public LuotThamResponseDTO save(LuotThamRequestDTO requestDTO) {
+        try {
         LuotTham bean = new LuotTham();
         BeanUtils.copyProperties(requestDTO, bean);
         bean = luotThamRepository.save(bean);
         return toResponseDTO(bean);
+    }catch (Exception exception){
+        throw new SystemException(ExceptionUtils.getRootCause(exception).getMessage());
+    }
     }
 
     public boolean delete(Integer id) {

@@ -13,6 +13,6 @@ public interface SinhVienRepository extends JpaRepository<SinhVien, String>, Jpa
     List<SinhVien> findAllSinhVienKyHopDong();
 
 
-    @Query(value = "select s from SinhVien s left join HopDong h on s.maSv = h.maSv where h.maHopDong is null and h.ngayKetThuc < current_date ")
+    @Query(value = "select s from SinhVien s left join HopDong h on s.maSv = h.maSv where h.maHopDong is null or h.ngayKetThuc < current_date ")
     List<SinhVien> findAllSinhVienChuaKyHopDong();
 }

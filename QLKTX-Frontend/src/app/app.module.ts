@@ -38,6 +38,10 @@ import { HoaDonDienNuocComponent } from './module/hoa-don-dien-nuoc/hoa-don-dien
 import { AddHoaDonDienNuocComponent } from './dialog/add-hoa-don-dien-nuoc/add-hoa-don-dien-nuoc.component';
 import { ThongKeKhachTheoThangComponent } from './module/thong-ke-khach-theo-thang/thong-ke-khach-theo-thang.component';
 import { ThongKeDienNuocPhongTheoThangComponent } from './module/thong-ke-dien-nuoc-phong-theo-thang/thong-ke-dien-nuoc-phong-theo-thang.component';
+import { ThongKeTongTienSvTheoThangComponent } from './module/thong-ke-tong-tien-sv-theo-thang/thong-ke-tong-tien-sv-theo-thang.component';
+import { ThongKeTienDichVuSvTheoThangComponent } from './module/thong-ke-tien-dich-vu-sv-theo-thang/thong-ke-tien-dich-vu-sv-theo-thang.component';
+import { NguoiSdtComponent } from './module/nguoi-sdt/nguoi-sdt.component';
+import { AddNguoiSdtComponent } from './dialog/add-nguoi-sdt/add-nguoi-sdt.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +74,11 @@ import { ThongKeDienNuocPhongTheoThangComponent } from './module/thong-ke-dien-n
     HoaDonDienNuocComponent,
     AddHoaDonDienNuocComponent,
     ThongKeKhachTheoThangComponent,
-    ThongKeDienNuocPhongTheoThangComponent
+    ThongKeDienNuocPhongTheoThangComponent,
+    ThongKeTongTienSvTheoThangComponent,
+    ThongKeTienDichVuSvTheoThangComponent,
+    NguoiSdtComponent,
+    AddNguoiSdtComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,79 @@
+<main class="content-wrapper">
+  <div class="container p-30">
+    <div class="task-list mb-3">
+      <h1>Thống kê khách của SV theo tháng</h1>
+    </div>
+
+    <div class="search-input">
+      <div class="row">
+        <div class="col-12 search-group">
+          <form [formGroup]="formSearch">
+            <mat-form-field>
+              <mat-label>Month and Year</mat-label>
+              <input matInput [matDatepicker]="dp" formControlName="dateTime">
+              <mat-hint>MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp startView="multi-year" (monthSelected)="setMonthAndYear($event, dp)"
+                panelClass="example-month-picker">
+              </mat-datepicker>
+            </mat-form-field>
+            <button class="btn btn-primary b-search ml-3" (click)="onSearch()">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 main-datatable mt-5">
+      <div class="card_body">
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="no">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element,index as i"> {{i+1}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="maSinhVien">
+              <th mat-header-cell *matHeaderCellDef> Mã SV </th>
+              <td mat-cell *matCellDef="let element"> {{element.maSinhVien}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="hoTen">
+              <th mat-header-cell *matHeaderCellDef> Họ tên </th>
+              <td mat-cell *matCellDef="let element"> {{element.hoTen}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="lop">
+              <th mat-header-cell *matHeaderCellDef> Lớp </th>
+              <td mat-cell *matCellDef="let element"> {{element.lop}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="tenPhong">
+              <th mat-header-cell *matHeaderCellDef> Tên phòng </th>
+              <td mat-cell *matCellDef="let element"> {{element.tenPhong}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tenKtx">
+              <th mat-header-cell *matHeaderCellDef> Tên KTX </th>
+              <td mat-cell *matCellDef="let element"> {{element.tenKtx}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tongTien">
+              <th mat-header-cell *matHeaderCellDef> Tổng tiền </th>
+              <td mat-cell *matCellDef="let element"> {{element.tongTien}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+                  </mat-paginator> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

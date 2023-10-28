@@ -23,7 +23,7 @@ public class NguoiRequestDTO {
     @NotNull(message = "diaChiThuongChu can not null")
     private String diaChiThuongChu;
 
-    @NotNull(message = "loai can not null")
-    private String loai;
+//    @NotNull(message = "loai can not null")
+//    private String loai;
 
 }

@@ -2,6 +2,8 @@ package com.qlktxbackend.repository.custom;
 
 import com.qlktxbackend.repository.custom.entity.DienNuocPhongTheoThang;
 import com.qlktxbackend.repository.custom.entity.KhachTheoThang;
+import com.qlktxbackend.repository.custom.entity.TienDichVuSVTheoThang;
+import com.qlktxbackend.repository.custom.entity.TongTienSVTheoThang;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.transform.Transformers;
 import org.hibernate.type.StandardBasicTypes;
@@ -64,6 +66,63 @@ public class ThongKeRepository {
                 .addScalar("tienDien", StandardBasicTypes.DOUBLE)
                 .addScalar("tienNuoc", StandardBasicTypes.DOUBLE)
                 .setResultTransformer(Transformers.aliasToBean(DienNuocPhongTheoThang.class));
+        query.setParameter("month", month);
+        query.setParameter("year", year);
+        return query.getResultList();
+    }
+
+    public List<TongTienSVTheoThang> thongKeTongTienSVTheoThang(Integer month, Integer year){
+        String sqlBuilder = "SELECT sv.ma_sv AS maSinhVien, ng.ho_ten AS hoTen, sv.lop as lop, p.ten_phong tenPhong, " +
+                "p.ten_ky_tuc_xa tenKtx, SUM(IFNULL(lp.gia, 0) + CASE WHEN IFNULL(gx.lan_gui, 0) > 2 THEN (IFNULL(gx.lan_gui, 0) - 2) * 3000 ELSE 0 " +
+                "END + IFNULL(vx.gia_tien, 0) + IFNULL(lg.tien_giat, 0)) AS tongTien " +
+                "FROM sinh_vien sv INNER JOIN nguoi ng ON sv.ma_so_dinh_danh_S = ng.ma_so_dinh_danh " +
+                "INNER JOIN hop_dong hd ON sv.ma_sv = hd.ma_SV AND MONTH(ngay_ket_thuc) >= :month and YEAR(ngay_ket_thuc) >= :year " +
+                "INNER JOIN phong p ON hd.ten_phong = p.ten_phong AND hd.ten_ktx = p.ten_ky_tuc_xa " +
+                "INNER JOIN loai_phong lp ON p.ma_loai_phong = lp.ma_loai_phong " +
+                "LEFT JOIN (SELECT ma_sv, COUNT(*) AS lan_gui FROM lan_gui_xe " +
+                "WHERE MONTH(thoi_gian_gui) = :month and YEAR(thoi_gian_gui) = :year GROUP BY ma_sv) gx ON sv.ma_sv = gx.ma_SV " +
+                "LEFT JOIN (SELECT ma_sv, COUNT(*) * 100000 AS gia_tien FROM ve_xe GROUP BY ma_sv) vx ON sv.ma_sv = vx.ma_sv " +
+                "LEFT JOIN (SELECT ma_SV, SUM(don_gia * khoi_luong) AS tien_giat FROM lan_giat " +
+                "WHERE MONTH(ngay_giat) = :month and YEAR(ngay_giat) = :year GROUP BY ma_SV) lg ON sv.ma_sv = lg.ma_SV " +
+                "GROUP BY sv.ma_sv ";
+        Query query = entityManager.createNativeQuery(sqlBuilder).unwrap(NativeQuery.class)
+                .addScalar("maSinhVien", StandardBasicTypes.STRING)
+                .addScalar("hoTen", StandardBasicTypes.STRING)
+                .addScalar("lop", StandardBasicTypes.STRING)
+                .addScalar("tenPhong", StandardBasicTypes.STRING)
+                .addScalar("tenKtx", StandardBasicTypes.STRING)
+                .addScalar("tongTien", StandardBasicTypes.DOUBLE)
+                .setResultTransformer(Transformers.aliasToBean(TongTienSVTheoThang.class));
+        query.setParameter("month", month);
+        query.setParameter("year", year);
+        return query.getResultList();
+    }
+
+    public List<TienDichVuSVTheoThang> thongKeTienDichVuSVTheoThang(Integer month, Integer year){
+        String sqlBuilder = "SELECT sv.ma_sv AS maSinhVien, ng.ho_ten AS hoTen, sv.lop as lop, p.ten_phong tenPhong, " +
+                "p.ten_ky_tuc_xa tenKtx, SUM(IFNULL(lp.gia, 0)) AS tienPhong, " +
+                "SUM( CASE WHEN IFNULL(gx.lan_gui, 0) > 2 THEN (IFNULL(gx.lan_gui, 0) - 2) * 3000 ELSE 0 END ) AS tienGuiXe, " +
+                "SUM(IFNULL(vx.gia_tien, 0)) AS tienVeXe, SUM(IFNULL(lg.tien_giat, 0)) AS tienGiat " +
+                "FROM sinh_vien sv INNER JOIN nguoi ng ON sv.ma_so_dinh_danh_S = ng.ma_so_dinh_danh " +
+                "INNER JOIN hop_dong hd ON sv.ma_sv = hd.ma_SV AND MONTH(ngay_ket_thuc) >= :month and YEAR(ngay_ket_thuc) >= :year " +
+                "INNER JOIN phong p ON hd.ten_phong = p.ten_phong AND hd.ten_ktx = p.ten_ky_tuc_xa " +
+                "INNER JOIN loai_phong lp ON p.ma_loai_phong = lp.ma_loai_phong " +
+                "LEFT JOIN (SELECT ma_sv, COUNT(*) AS lan_gui FROM lan_gui_xe WHERE MONTH(thoi_gian_gui) = :month and YEAR(thoi_gian_gui) = :year " +
+                "GROUP BY ma_sv) gx ON sv.ma_sv = gx.ma_SV " +
+                "LEFT JOIN (SELECT ma_sv, COUNT(*) * 100000 AS gia_tien FROM ve_xe GROUP BY ma_sv) vx ON sv.ma_sv = vx.ma_sv " +
+                "LEFT JOIN (SELECT ma_SV, SUM(don_gia * khoi_luong) AS tien_giat FROM lan_giat " +
+                "WHERE MONTH(ngay_giat) = :month and YEAR(ngay_giat) = :year GROUP BY ma_SV) lg ON sv.ma_sv = lg.ma_SV " +
+                "GROUP BY sv.ma_sv ";
+        Query query = entityManager.createNativeQuery(sqlBuilder).unwrap(NativeQuery.class)
+                .addScalar("maSinhVien", StandardBasicTypes.STRING)
+                .addScalar("hoTen", StandardBasicTypes.STRING)
+                .addScalar("lop", StandardBasicTypes.STRING)
+                .addScalar("tenPhong", StandardBasicTypes.STRING)
+                .addScalar("tenKtx", StandardBasicTypes.STRING)
+                .addScalar("tienPhong", StandardBasicTypes.DOUBLE)
+                .addScalar("tienVeXe", StandardBasicTypes.DOUBLE)
+                .addScalar("tienGiat", StandardBasicTypes.DOUBLE)
+                .setResultTransformer(Transformers.aliasToBean(TienDichVuSVTheoThang.class));
         query.setParameter("month", month);
         query.setParameter("year", year);
         return query.getResultList();

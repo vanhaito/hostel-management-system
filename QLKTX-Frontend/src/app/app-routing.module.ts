@@ -16,6 +16,8 @@ import { GiatLaComponent } from './module/giat-la/giat-la.component';
 import { HoaDonDienNuocComponent } from './module/hoa-don-dien-nuoc/hoa-don-dien-nuoc.component';
 import { ThongKeKhachTheoThangComponent } from './module/thong-ke-khach-theo-thang/thong-ke-khach-theo-thang.component';
 import { ThongKeDienNuocPhongTheoThangComponent } from './module/thong-ke-dien-nuoc-phong-theo-thang/thong-ke-dien-nuoc-phong-theo-thang.component';
+import { ThongKeTienDichVuSvTheoThangComponent } from './module/thong-ke-tien-dich-vu-sv-theo-thang/thong-ke-tien-dich-vu-sv-theo-thang.component';
+import { ThongKeTongTienSvTheoThangComponent } from './module/thong-ke-tong-tien-sv-theo-thang/thong-ke-tong-tien-sv-theo-thang.component';
 
 const routes: Routes = [
   {path: '',component: AppComponent},
@@ -35,6 +37,8 @@ const routes: Routes = [
   {path: 'hoa-don-dien-nuoc',component: HoaDonDienNuocComponent},
   {path: 'thong-ke-khach',component: ThongKeKhachTheoThangComponent},
   {path: 'thong-ke-dien-nuoc-thang',component: ThongKeDienNuocPhongTheoThangComponent},
+  {path: 'thong-ke-tien-dich-vu-sv',component: ThongKeTienDichVuSvTheoThangComponent},
+  {path: 'thong-ke-tong-tien-sv',component: ThongKeTongTienSvTheoThangComponent},
 ];
 
 @NgModule({

@@ -32,7 +32,7 @@ makeForm(){
       "hoTen": new FormControl('',Validators.required),
       "gioiTinh": new FormControl('',Validators.required),
       "diaChiThuongChu": new FormControl('',Validators.required),
-      "loai": new FormControl('',Validators.required)
+      // "loai": new FormControl('',Validators.required)
   });
 }
 

@@ -34,36 +34,36 @@
               <td mat-cell *matCellDef="let element,index as i"> {{i+1}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="maSv">
+            <ng-container matColumnDef="maSinhVien">
               <th mat-header-cell *matHeaderCellDef> Mã SV </th>
-              <td mat-cell *matCellDef="let element"> {{element.maSv}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.maSinhVien}} </td>
             </ng-container>
 
+            <!-- Name Column -->
+            <ng-container matColumnDef="hoTen">
+              <th mat-header-cell *matHeaderCellDef> Họ tên </th>
+              <td mat-cell *matCellDef="let element"> {{element.hoTen}} </td>
+            </ng-container>
 
             <ng-container matColumnDef="lop">
               <th mat-header-cell *matHeaderCellDef> Lớp </th>
               <td mat-cell *matCellDef="let element"> {{element.lop}} </td>
             </ng-container>
 
-            <!-- Name Column -->
-            <ng-container matColumnDef="maSoDinhDanhS">
-              <th mat-header-cell *matHeaderCellDef> MSDD Sinh Viên </th>
-              <td mat-cell *matCellDef="let element"> {{element.maSoDinhDanhS}} </td>
+
+            <ng-container matColumnDef="tenPhong">
+              <th mat-header-cell *matHeaderCellDef> Tên phòng </th>
+              <td mat-cell *matCellDef="let element"> {{element.tenPhong}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="maSoDinhDanhK">
-              <th mat-header-cell *matHeaderCellDef> MSDD Khách </th>
-              <td mat-cell *matCellDef="let element"> {{element.maSoDinhDanhK}} </td>
+            <ng-container matColumnDef="tenKtx">
+              <th mat-header-cell *matHeaderCellDef> Tên KTX </th>
+              <td mat-cell *matCellDef="let element"> {{element.tenKtx}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="ngheNghiep">
-              <th mat-header-cell *matHeaderCellDef> Nghề nghiệp </th>
-              <td mat-cell *matCellDef="let element"> {{element.ngheNghiep}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="hoTen">
-              <th mat-header-cell *matHeaderCellDef> Họ Tên </th>
-              <td mat-cell *matCellDef="let element"> {{element.hoTen}} </td>
+            <ng-container matColumnDef="tienPhong">
+              <th mat-header-cell *matHeaderCellDef> Tiền phòng </th>
+              <td mat-cell *matCellDef="let element"> {{element.tienPhong}} </td>
             </ng-container>
 
             <!-- <ng-container matColumnDef="ngheNghiep">
@@ -71,24 +71,14 @@
               <td mat-cell *matCellDef="let element"> {{element.ngheNghiep}} </td>
             </ng-container> -->
 
-            <ng-container matColumnDef="gioiTinh">
-              <th mat-header-cell *matHeaderCellDef> Giới tính </th>
-              <td mat-cell *matCellDef="let element"> {{element.gioiTinh}} </td>
+            <ng-container matColumnDef="tienVeXe">
+              <th mat-header-cell *matHeaderCellDef> Tiền vé xe </th>
+              <td mat-cell *matCellDef="let element"> {{element.tienVeXe}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="ngaySinh">
-              <th mat-header-cell *matHeaderCellDef> Ngày Sinh </th>
-              <td mat-cell *matCellDef="let element"> {{element.ngaySinh | date: 'dd/MM/yyyy'}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="diaChiThuongChu">
-              <th mat-header-cell *matHeaderCellDef> Địa chỉ TC </th>
-              <td mat-cell *matCellDef="let element"> {{element.diaChiThuongChu}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="soLuotTham">
-              <th mat-header-cell *matHeaderCellDef> Số lượt thăm </th>
-              <td mat-cell *matCellDef="let element"> {{element.soLuotTham}} </td>
+            <ng-container matColumnDef="tienGiat">
+              <th mat-header-cell *matHeaderCellDef> Tiền giặt </th>
+              <td mat-cell *matCellDef="let element"> {{element.tienGiat}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
