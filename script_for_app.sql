@@ -244,18 +244,24 @@ SET @month = 10;
 SET @year = 2023;
 SET @start_date = DATE_FORMAT(CONCAT(@year, '-', @month, '-01'), '%Y-%m-%d');
 SET @end_date = LAST_DAY(@start_date);
+
 SELECT
+    kt.ten_ky_tuc_xa AS KyTucXa,
     'ThuePhong' AS DichVu,
     SUM(IFNULL(lp.gia, 0)) AS DoanhThu
 FROM
-    phong p
+    ky_tuc_xa kt
+INNER JOIN
+    phong p ON kt.ten_ky_tuc_xa = p.ten_ky_tuc_xa
 INNER JOIN
     loai_phong lp ON p.ma_loai_phong = lp.ma_loai_phong
 INNER JOIN
     hop_dong hd ON p.ten_phong = hd.ten_phong AND p.ten_ky_tuc_xa = hd.ten_ktx
-    AND MONTH(ngay_ket_thuc) >= @month and YEAR(ngay_ket_thuc) >= @year
+    AND MONTH(hd.ngay_ket_thuc) = @month AND YEAR(hd.ngay_ket_thuc) = @year
+GROUP BY kt.ten_ky_tuc_xa
 UNION
 SELECT
+    kt.ten_ky_tuc_xa AS KyTucXa,
     'GuiXe' AS DichVu,
     SUM(
         CASE
@@ -264,24 +270,43 @@ SELECT
         END
     ) AS DoanhThu
 FROM
+    ky_tuc_xa kt
+INNER JOIN
+    phong p ON kt.ten_ky_tuc_xa = p.ten_ky_tuc_xa
+RIGHT JOIN
     (SELECT ma_sv, COUNT(*) AS lan_gui
     FROM lan_gui_xe
-    WHERE MONTH(thoi_gian_gui) = @month and YEAR(thoi_gian_gui) = @year
-    GROUP BY ma_sv) gx
+    WHERE MONTH(thoi_gian_gui) = @month AND YEAR(thoi_gian_gui) = @year
+    GROUP BY ma_sv) gx ON p.ten_phong = gx.ma_sv
+GROUP BY kt.ten_ky_tuc_xa
 UNION
 SELECT
+    kt.ten_ky_tuc_xa AS KyTucXa,
     'VeXe' AS DichVu,
     SUM(IFNULL(vx.gia_tien, 0)) AS DoanhThu
 FROM
+    ky_tuc_xa kt
+INNER JOIN
+    phong p ON kt.ten_ky_tuc_xa = p.ten_ky_tuc_xa
+RIGHT JOIN
     (SELECT ma_sv, COUNT(*) * 100000 AS gia_tien
     FROM ve_xe
-    GROUP BY ma_sv) vx
+    GROUP BY ma_sv) vx ON p.ten_phong = vx.ma_sv
+GROUP BY kt.ten_ky_tuc_xa
 UNION
 SELECT
+    kt.ten_ky_tuc_xa AS KyTucXa,
     'GiatDo' AS DichVu,
     SUM(IFNULL(lg.tien_giat, 0)) AS DoanhThu
 FROM
+    ky_tuc_xa kt
+INNER JOIN
+    phong p ON kt.ten_ky_tuc_xa = p.ten_ky_tuc_xa
+RIGHT JOIN
     (SELECT ma_SV, SUM(don_gia * khoi_luong) AS tien_giat
     FROM lan_giat
-    WHERE MONTH(ngay_giat) = @month and YEAR(ngay_giat) = @year
-    GROUP BY ma_SV) lg;
+    WHERE MONTH(ngay_giat) = @month AND YEAR(ngay_giat) = @year
+    GROUP BY ma_SV) lg ON p.ten_phong = lg.ma_SV
+GROUP BY kt.ten_ky_tuc_xa;
+
+
