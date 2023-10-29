@@ -75,7 +75,7 @@ export class LoaiPhongComponent implements OnInit {
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult == true) {
         console.log('delete');
-        this.loaiPhongService.deleteLoaiPhong(loaiPhong.maSoDinhDanhS).subscribe(
+        this.loaiPhongService.deleteLoaiPhong(loaiPhong.maLoaiPhong).subscribe(
           (data) => {
             this.openSnackBar('Xóa thành công');
             this.getAll();
@@ -129,7 +129,7 @@ export class LoaiPhongComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log(result);
-        this.loaiPhongService.update(result, result.maSoDinhDanhS).subscribe(
+        this.loaiPhongService.update(result, result.maLoaiPhong).subscribe(
           (data) => {
             this.openSnackBar('cập nhật thành công');
             this.getAll();

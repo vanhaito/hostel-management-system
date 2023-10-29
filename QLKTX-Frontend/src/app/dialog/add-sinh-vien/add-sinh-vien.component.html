@@ -33,7 +33,7 @@
             <div class="mt-2 form">
                 <mat-form-field class="fullWidth" appearance="outline">
                     <mat-label>Mã sinh viên </mat-label>
-                    <input matInput type="text" formControlName="maSv" [(ngModel)]="data.sinhVien.maSv" />
+                    <input matInput type="text" formControlName="maSv" [(ngModel)]="data.sinhVien.maSv" [readonly]="data.update"/>
                     <mat-error *ngIf="
           formControl.controls['maSv']?.errors?.required">field required</mat-error>
                 </mat-form-field>

@@ -2,10 +2,7 @@ package com.qlktxbackend.entities;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 
@@ -18,6 +15,7 @@ public class HoaDonDienNuoc implements Serializable {
 
     @Id
     @Column(name = "ma_hoa_don", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String maHoaDon;
 
     @Column(name = "ngay_lap_hoa_don", nullable = false)

@@ -17,8 +17,8 @@
           <div class="mt-2 form">
               <mat-form-field class="fullWidth" appearance="outline">
                   <mat-label>Mã só định danh</mat-label>
-                  <mat-select [disabled]="data.update" [(ngModel)]="data.nguoiSdt.maSoDinhDanhS"
-                      formControlName='maSoDinhDanhS'>
+                  <mat-select [disabled]="data.update" [(ngModel)]="data.nguoiSdt.maSoDinhDanh"
+                      formControlName='maSoDinhDanh'>
                       <!-- <mat-option>
                           <ngx-mat-select-search formControlName="maSoDinhDanhS"></ngx-mat-select-search>
                       </mat-option> -->
@@ -26,14 +26,14 @@
                           {{item.maSoDinhDanh}}-{{item.hoTen}}</mat-option>
                   </mat-select>
                   <mat-error *ngIf="
-            formControl.controls['maSoDinhDanhS']?.errors?.required">field required</mat-error>
+            formControl.controls['maSoDinhDanh']?.errors?.required">field required</mat-error>
               </mat-form-field>
           </div>
 
           <div class="mt-2 form">
               <mat-form-field class="fullWidth" appearance="outline">
                   <mat-label>Số điện thoại </mat-label>
-                  <input matInput type="text" formControlName="soDienThoai" [(ngModel)]="data.nguoiSdt.maSv" />
+                  <input matInput type="text" formControlName="soDienThoai" [(ngModel)]="data.nguoiSdt.soDienThoai" />
                   <mat-error *ngIf="
         formControl.controls['soDienThoai']?.errors?.required">field required</mat-error>
               </mat-form-field>

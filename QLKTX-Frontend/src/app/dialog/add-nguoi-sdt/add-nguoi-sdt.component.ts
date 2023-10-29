@@ -23,7 +23,7 @@ export class AddNguoiSdtComponent implements OnInit {
 
 makeForm(){
     this.formControl = new FormGroup({
-      "maSoDinhDanhS":  new FormControl('',Validators.required),
+      "maSoDinhDanh":  new FormControl('',Validators.required),
       "soDienThoai": new FormControl('',Validators.required)
   });
 }

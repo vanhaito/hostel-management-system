@@ -39,7 +39,7 @@
       <div class="mt-2 form">
         <mat-form-field class="fullWidth" appearance="outline">
           <mat-label>Mã SV</mat-label>
-          <mat-select [(ngModel)]="data.hopDong.maSv" formControlName='maSv'>
+          <mat-select [disabled]="data.update" [(ngModel)]="data.hopDong.maSv" formControlName='maSv'>
             <!-- <mat-option>
                         <ngx-mat-select-search formControlName="maSoDinhDanhS"></ngx-mat-select-search>
                     </mat-option> -->

@@ -42,6 +42,7 @@ import { ThongKeTongTienSvTheoThangComponent } from './module/thong-ke-tong-tien
 import { ThongKeTienDichVuSvTheoThangComponent } from './module/thong-ke-tien-dich-vu-sv-theo-thang/thong-ke-tien-dich-vu-sv-theo-thang.component';
 import { NguoiSdtComponent } from './module/nguoi-sdt/nguoi-sdt.component';
 import { AddNguoiSdtComponent } from './dialog/add-nguoi-sdt/add-nguoi-sdt.component';
+import { ThongKeTongTienDichVuKtxTheoThangComponent } from './module/thong-ke-tong-tien-dich-vu-ktx-theo-thang/thong-ke-tong-tien-dich-vu-ktx-theo-thang.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { AddNguoiSdtComponent } from './dialog/add-nguoi-sdt/add-nguoi-sdt.compo
     ThongKeTongTienSvTheoThangComponent,
     ThongKeTienDichVuSvTheoThangComponent,
     NguoiSdtComponent,
-    AddNguoiSdtComponent
+    AddNguoiSdtComponent,
+    ThongKeTongTienDichVuKtxTheoThangComponent
   ],
   imports: [
     BrowserModule,

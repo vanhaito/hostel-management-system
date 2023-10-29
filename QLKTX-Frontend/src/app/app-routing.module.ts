@@ -19,6 +19,7 @@ import { ThongKeDienNuocPhongTheoThangComponent } from './module/thong-ke-dien-n
 import { ThongKeTienDichVuSvTheoThangComponent } from './module/thong-ke-tien-dich-vu-sv-theo-thang/thong-ke-tien-dich-vu-sv-theo-thang.component';
 import { ThongKeTongTienSvTheoThangComponent } from './module/thong-ke-tong-tien-sv-theo-thang/thong-ke-tong-tien-sv-theo-thang.component';
 import { NguoiSdtComponent } from './module/nguoi-sdt/nguoi-sdt.component';
+import { ThongKeTongTienDichVuKtxTheoThangComponent } from './module/thong-ke-tong-tien-dich-vu-ktx-theo-thang/thong-ke-tong-tien-dich-vu-ktx-theo-thang.component';
 
 const routes: Routes = [
   {path: '',component: AppComponent},
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path: 'thong-ke-dien-nuoc-thang',component: ThongKeDienNuocPhongTheoThangComponent},
   {path: 'thong-ke-tien-dich-vu-sv',component: ThongKeTienDichVuSvTheoThangComponent},
   {path: 'thong-ke-tong-tien-sv',component: ThongKeTongTienSvTheoThangComponent},
+  {path: 'thong-ke-tien-dich-vu-ktx',component: ThongKeTongTienDichVuKtxTheoThangComponent},
 ];
 
 @NgModule({

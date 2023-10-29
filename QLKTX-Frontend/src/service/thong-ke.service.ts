@@ -29,4 +29,9 @@ export class ThongKeService {
     const url = `${this.baseUrl}/tien-dich-vu-sv-theo-thang/${month}/${year}`;
     return this.httpClient.get<any>(url);
   }
+
+  getThongKeTongTienDichVuKtxTheoThang(month: any, year: any){
+    const url = `${this.baseUrl}/tong-tien-dich-vu-ktx-theo-thang/${month}/${year}`;
+    return this.httpClient.get<any>(url);
+  }
 }

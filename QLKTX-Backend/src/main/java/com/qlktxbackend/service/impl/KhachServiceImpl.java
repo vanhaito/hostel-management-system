@@ -5,7 +5,9 @@ import com.qlktxbackend.dto.request.KhachUpdateRequestDTO;
 import com.qlktxbackend.dto.response.KhachResponseDTO;
 import com.qlktxbackend.dto.response.NguoiResponseDTO;
 import com.qlktxbackend.entities.Khach;
+import com.qlktxbackend.entities.Nguoi;
 import com.qlktxbackend.repository.KhachRepository;
+import com.qlktxbackend.repository.NguoiRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,10 +22,16 @@ public class KhachServiceImpl {
     @Autowired
     private KhachRepository khachRepository;
 
+    @Autowired
+    private NguoiRepository nguoiRepository;
+
     public KhachResponseDTO save(KhachRequestDTO requestDTO) {
         Khach bean = new Khach();
         BeanUtils.copyProperties(requestDTO, bean);
         bean = khachRepository.save(bean);
+        Nguoi nguoi = nguoiRepository.getById(bean.getMaSoDinhDanhK());
+        nguoi.setLoai("Khach");
+        nguoiRepository.save(nguoi);
         return toResponseDTO(bean);
     }
 

@@ -78,7 +78,7 @@ export class GiatLaComponent implements OnInit {
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult == true) {
         console.log('delete');
-        this.giatLaService.deleteLanGiat(giatLa.bienSoXe).subscribe(
+        this.giatLaService.deleteLanGiat(giatLa.maLuotGiat).subscribe(
           (data) => {
             this.openSnackBar('Xóa thành công');
             this.getAll();
@@ -141,7 +141,7 @@ export class GiatLaComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log(result);
-        this.giatLaService.update(result, result.bienSoXe).subscribe(
+        this.giatLaService.update(result, result.maLuotGiat).subscribe(
           (data) => {
             this.openSnackBar('cập nhật thành công');
             this.getAll();

@@ -1,9 +1,6 @@
 package com.qlktxbackend.controller;
 
-import com.qlktxbackend.repository.custom.entity.DienNuocPhongTheoThang;
-import com.qlktxbackend.repository.custom.entity.KhachTheoThang;
-import com.qlktxbackend.repository.custom.entity.TienDichVuSVTheoThang;
-import com.qlktxbackend.repository.custom.entity.TongTienSVTheoThang;
+import com.qlktxbackend.repository.custom.entity.*;
 import com.qlktxbackend.service.impl.ThongKeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -44,5 +41,10 @@ public class ThongKeController {
     @GetMapping("/tien-dich-vu-sv-theo-thang/{month}/{year}")
     public List<TienDichVuSVTheoThang> getThongKeTienDichVuSVTheoThang(@Valid @NotNull @PathVariable("month") Integer month, @Valid @NotNull @PathVariable Integer year) {
         return thongKeService.getThongKeTienDichVuSVTheoThang(month, year);
+    }
+
+    @GetMapping("/tong-tien-dich-vu-ktx-theo-thang/{month}/{year}")
+    public List<TongTienDichVuKtxTheoThang> getThongKeTongTienDichVuKtxTheoThang(@Valid @NotNull @PathVariable("month") Integer month, @Valid @NotNull @PathVariable Integer year) {
+        return thongKeService.getThongKeTongTienDichVuKtxTheoThang(month, year);
     }
 }

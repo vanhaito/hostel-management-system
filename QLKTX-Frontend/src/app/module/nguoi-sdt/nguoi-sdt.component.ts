@@ -46,6 +46,7 @@ export class NguoiSdtComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
+    this.getListNguoi();
   }
 
   getListNguoi(){
@@ -138,7 +139,7 @@ export class NguoiSdtComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log(result);
-        this.nguoiSdtService.update(result, result.maSoDinhDanh, result.soDienThoai).subscribe(
+        this.nguoiSdtService.update(result, data.maSoDinhDanh, data.soDienThoai).subscribe(
           (data) => {
             this.openSnackBar('cập nhật thành công');
             this.getAll();

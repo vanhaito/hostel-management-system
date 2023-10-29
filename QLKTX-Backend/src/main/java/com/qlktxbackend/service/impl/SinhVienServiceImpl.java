@@ -4,7 +4,9 @@ import com.qlktxbackend.dto.request.SinhVienRequestDTO;
 import com.qlktxbackend.dto.request.SinhVienUpdateRequestDTO;
 import com.qlktxbackend.dto.response.NguoiResponseDTO;
 import com.qlktxbackend.dto.response.SinhVienResponseDTO;
+import com.qlktxbackend.entities.Nguoi;
 import com.qlktxbackend.entities.SinhVien;
+import com.qlktxbackend.repository.NguoiRepository;
 import com.qlktxbackend.repository.SinhVienRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +22,16 @@ public class SinhVienServiceImpl {
     @Autowired
     private SinhVienRepository sinhVienRepository;
 
+    @Autowired
+    private NguoiRepository nguoiRepository;
+
     public SinhVienResponseDTO save(SinhVienRequestDTO requestDTO) {
         SinhVien bean = new SinhVien();
         BeanUtils.copyProperties(requestDTO, bean);
         bean = sinhVienRepository.save(bean);
+        Nguoi nguoi = nguoiRepository.getById(bean.getMaSoDinhDanhS());
+        nguoi.setLoai("Sinh vien");
+        nguoiRepository.save(nguoi);
         return toResponseDTO(bean);
     }
 

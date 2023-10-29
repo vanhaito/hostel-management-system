@@ -77,7 +77,7 @@ export class SinhVienComponent implements OnInit {
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult == true) {
         console.log('delete');
-        this.sinhVienService.deleteSinhVien(sinhVien.maSoDinhDanhS).subscribe(
+        this.sinhVienService.deleteSinhVien(sinhVien.maSv).subscribe(
           (data) => {
             this.openSnackBar('Xóa thành công');
             this.getAll();
@@ -140,7 +140,7 @@ export class SinhVienComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log(result);
-        this.sinhVienService.update(result, result.maSoDinhDanhS).subscribe(
+        this.sinhVienService.update(result, result.maSv).subscribe(
           (data) => {
             this.openSnackBar('cập nhật thành công');
             this.getAll();
